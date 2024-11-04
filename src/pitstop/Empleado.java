@@ -52,11 +52,11 @@ public abstract class Empleado implements Nombre {
         this.telefono = telefono;
     }
 
-    public String getEmail() {
+    public String geteMail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void seteMail(String email) {
         this.email = email;
     }
 

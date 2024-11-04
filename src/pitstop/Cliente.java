@@ -20,10 +20,6 @@ public class Cliente implements Nombre {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -75,5 +71,18 @@ public class Cliente implements Nombre {
     
     public String getFullName(){
         return getNombre() + " " + getApellidoP() + " " + getApellidoM();
+    }
+    
+    public void Create(){
+        SqLite sql = new SqLite();
+        String query = "INSERT INTO Clientes (nombre, apellidoP, apellidoM, numeroTel, eMail)"
+                + " VALUES (" + getNombre() + ", " + getApellidoP() + ", " + getApellidoM() + ", " + getTelefono() + ", " + geteMail() + ");";
+        sql.ExecuteQuery(query);
+    }
+    
+    public void Update(){
+        SqLite sql = new SqLite();
+        String query = "UPDATE Clientes SET nombre = " + getNombre() + ", apellidoP = " + getApellidoP() + ", apellidoM = " + getApellidoM() + ", numeroTel = " + getTelefono() + ""
+                + ", eMail = " + geteMail() + " WHERE ID = " + getIdCliente() + ";"; 
     }
 }
