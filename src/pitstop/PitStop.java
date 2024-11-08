@@ -4,16 +4,17 @@
  */
 package pitstop;
 import java.util.Scanner;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PitStop {
 
     public static void main(String[] args) {
-        ProbarCrearTecnico();
+        ProbarCrearAsesor();
     }
     
+    
+    
+//FUNCION DE PRUEBA, IGNORAR
     public static void ProbarCrearTecnico(){
 //        String nombre = "John";
 //        String apellidoP = "Wick";
@@ -26,27 +27,27 @@ public class PitStop {
 //        Tecnico nuevo = new Tecnico(nombre, apellidoP, apellidoM, telefono, email, nivel);
 //        nuevo.Create();
         SqLite sql = new SqLite();
-        ResultSet res = sql.RetrieveQuery("Select * From Empleados");
-        ArrayList<String[]> empleados = new ArrayList<String[]>();
-        try{
-            while(res.next()){
-                String[] array = new String[6];
-                array[0] = Integer.toString(res.getInt("IdEmpleado"));
-                array[1] = res.getString("nombre");
-                array[2] = res.getString("apellidoP");
-                array[3] = res.getString("apellidoM");
-                array[4] = res.getString("numeroTel");
-                array[5] = res.getString("eMail");
-                array[6] = res.getString("nivel");
-                
-                empleados.add(array);
-            }
-        }catch(SQLException e){
-            e.printStackTrace(System.err);
+        ArrayList<Tecnico> res = sql.RetrieveTecnicos("Select * From Empleados;");
+        for(Tecnico empleado : res){
+            System.out.println("Nombre: " + empleado.getFullName() + " Telefono: " + empleado.getTelefono() + " eMail: " + empleado.geteMail() + " Nivel: " + empleado.getNivelTecnico());
         }
+    }
+    
+    public static void ProbarCrearAsesor(){
+        String nombre = "Jorge";
+        String apellidoP = "Sansores";
+        String apellidoM = "Paaafasfa";
+        String telefono = "1234567891011";
+        String email = "paaafasfa@google.com";
         
-        for(String[] empleado : empleados){
-            System.out.println("Nombre: " + empleado[1] + " Apellidos: " + empleado[2] + " " + empleado[3] + " Telefono: " + empleado[4] + " eMail: " + empleado[5] + " Nivel: " + empleado[6]);
+        
+        Asesor nuevo = new Asesor(0, nombre, apellidoP, apellidoM, telefono, email);
+        nuevo.Create();
+        
+        SqLite sql = new SqLite();
+        ArrayList<Asesor> res = sql.RetrieveAsesores("Select * From Empleados;");
+        for(Asesor empleado : res){
+            System.out.println("Nombre: " + empleado.getFullName() + " Telefono: " + empleado.getTelefono() + " eMail: " + empleado.geteMail());
         }
     }
 }

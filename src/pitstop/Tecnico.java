@@ -20,8 +20,8 @@ public class Tecnico extends Empleado {
         this.nivelTecnico = nivelTecnico;
     }
 
-    public Tecnico(String nombre, String apellidoP, String apellidoM, String telefono, String email, nivel nivelTecnico) {
-        super(nombre, apellidoP, apellidoM, telefono, email);
+    public Tecnico(int IdEmpleado, String nombre, String apellidoP, String apellidoM, String telefono, String email, nivel nivelTecnico) {
+        super(IdEmpleado, nombre, apellidoP, apellidoM, telefono, email);
         this.nivelTecnico = nivelTecnico;
     }
     

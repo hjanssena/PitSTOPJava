@@ -76,14 +76,20 @@ public class Cliente implements Nombre {
     public void Create(){
         SqLite sql = new SqLite();
         String query = "INSERT INTO Clientes (nombre, apellidoP, apellidoM, numeroTel, eMail)"
-                + " VALUES (" + getNombre() + ", " + getApellidoP() + ", " + getApellidoM() + ", " + getTelefono() + ", " + geteMail() + ");";
+                + " VALUES ('" + getNombre() + "', '" + getApellidoP() + "', '" + getApellidoM() + "', '" + getTelefono() + "', '"
+                + geteMail() + "');";
         sql.UpdateQuery(query);
     }
     
     public void Update(){
         SqLite sql = new SqLite();
-        String query = "UPDATE Clientes SET nombre = " + getNombre() + ", apellidoP = " + getApellidoP() + ", apellidoM = " + getApellidoM() + ", numeroTel = " + getTelefono() + ""
-                + ", eMail = " + geteMail() + " WHERE ID = " + getIdCliente() + ";"; 
+        String query = "UPDATE Clientes SET nombre = '" + getNombre() + "', apellidoP = '" + getApellidoP() + "', apellidoM = '"
+                + getApellidoM() + "', numeroTel = '" + getTelefono()
+                + "', eMail = '" + geteMail() + "' WHERE ID = '" + getIdCliente() + "';"; 
         sql.UpdateQuery(query);
+    }
+    
+    public void GetFromDb(int Id){
+        
     }
 }

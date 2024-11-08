@@ -106,18 +106,18 @@ public class OrdenServicio {
     public void Create(){
         SqLite sql = new SqLite();
         String query = "INSERT INTO OrdenesServicio (fechaCreacion, estatus, tipoServicio, fechaPromesa, idAsesor, idTecnico, idVehiculo, servicio)"
-                + " VALUES (" + "now" + ", " + getEstatusActual() + ", " + getTipoServicio() + ", "
-                + getFechaPromesa().toString().replace('T', ' ') + ", " + getAsesor().getId() + ", " + getTecnico().getId() + ", "
-                + getVehiculo().getIdVehiculo() + ", " + getServicio() + ");";
+                + " VALUES (" + "now" + ", '" + getEstatusActual() + "', '" + getTipoServicio() + "', '"
+                + getFechaPromesa().toString().replace('T', ' ') + "', '" + getAsesor().getId() + "', '" + getTecnico().getId() + "', '"
+                + getVehiculo().getIdVehiculo() + "', '" + getServicio() + "');";
         sql.UpdateQuery(query);
     }
     
     public void Update(){
         SqLite sql = new SqLite();
-        String query = "UPDATE OrdenesServicio SET estatus = " + getEstatusActual() + ", tipoServicio = " + getTipoServicio() + ", fechaPromesa = "
-                + getFechaPromesa().toString().replace('T', ' ') + ", idAsesor = " + getAsesor().getId()
-                + ", idTecnico = " + getTecnico().getId() + ", idVehiculo = " + getVehiculo().getIdVehiculo() + ", servicio = " + getServicio()
-                + " WHERE ID = " + getOrdenId() + ";"; 
+        String query = "UPDATE OrdenesServicio SET estatus = '" + getEstatusActual() + "', tipoServicio = '" + getTipoServicio() + "', fechaPromesa = '"
+                + getFechaPromesa().toString().replace('T', ' ') + "', idAsesor = '" + getAsesor().getId()
+                + "', idTecnico = '" + getTecnico().getId() + "', idVehiculo = '" + getVehiculo().getIdVehiculo() + "', servicio = '" + getServicio()
+                + "' WHERE ID = " + getOrdenId() + ";"; 
         sql.UpdateQuery(query);
     }
 }

@@ -60,7 +60,8 @@ public abstract class Empleado implements Nombre {
         this.email = email;
     }
 
-    public Empleado(String nombre, String apellidoP, String apellidoM, String telefono, String email) {
+    public Empleado(int idEmpleado, String nombre, String apellidoP, String apellidoM, String telefono, String email) {
+        this.idEmpleado = idEmpleado;
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;

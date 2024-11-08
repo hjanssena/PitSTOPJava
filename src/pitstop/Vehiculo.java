@@ -81,16 +81,16 @@ public class Vehiculo {
     public void Create(){
         SqLite sql = new SqLite();
         String query = "INSERT INTO Vehiculos (modelo, marca, serie, placa, kilometraje, idCliente)"
-                + " VALUES (" + getModelo() + ", " + getMarca() + ", " + getnSerie() + ", "
-                + getPlaca() + ", " + getKilometraje() + ", " + getCliente().getIdCliente() + ");";
+                + " VALUES ('" + getModelo() + "', '" + getMarca() + "', '" + getnSerie() + "', '"
+                + getPlaca() + "', '" + getKilometraje() + "', '" + getCliente().getIdCliente() + "');";
         sql.UpdateQuery(query);
     }
     
     public void Update(){
         SqLite sql = new SqLite();
-        String query = "UPDATE Vehiculos SET modelo = " + getModelo() + ", marca = " + getMarca() + ", serie = "
-                + getnSerie() + ", placa = " + getPlaca() + ", kilometraje = " + getKilometraje()
-                + " WHERE ID = " + getIdVehiculo() + ";"; 
+        String query = "UPDATE Vehiculos SET modelo = '" + getModelo() + "', marca = '" + getMarca() + "', serie = '"
+                + getnSerie() + "', placa = '" + getPlaca() + "', kilometraje = '" + getKilometraje()
+                + "' WHERE ID = " + getIdVehiculo() + ";"; 
         sql.UpdateQuery(query);
     }
 }
