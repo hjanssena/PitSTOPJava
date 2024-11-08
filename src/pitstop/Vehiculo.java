@@ -14,10 +14,11 @@ public class Vehiculo {
     private String marca;
     private String modelo;
     private String placa;
-    private int kilometraje;
+    private String kilometraje;
     private Cliente cliente;
 
-    public Vehiculo(String nSerie, String marca, String modelo, String placa, int kilometraje, Cliente cliente) {
+    public Vehiculo(int idVehiculo, String nSerie, String marca, String modelo, String placa, String kilometraje, Cliente cliente) {
+        this.idVehiculo = idVehiculo;
         this.nSerie = nSerie;
         this.marca = marca;
         this.modelo = modelo;
@@ -46,7 +47,7 @@ public class Vehiculo {
         return placa;
     }
 
-    public int getKilometraje() {
+    public String getKilometraje() {
         return kilometraje;
     }
 
@@ -70,7 +71,7 @@ public class Vehiculo {
         this.placa = placa;
     }
 
-    public void setKilometraje(int kilometraje) {
+    public void setKilometraje(String kilometraje) {
         this.kilometraje = kilometraje;
     }
 
@@ -90,7 +91,7 @@ public class Vehiculo {
         SqLite sql = new SqLite();
         String query = "UPDATE Vehiculos SET modelo = '" + getModelo() + "', marca = '" + getMarca() + "', serie = '"
                 + getnSerie() + "', placa = '" + getPlaca() + "', kilometraje = '" + getKilometraje()
-                + "' WHERE ID = " + getIdVehiculo() + ";"; 
+                + "' WHERE idVehiculo = " + getIdVehiculo() + ";"; 
         sql.UpdateQuery(query);
     }
 }

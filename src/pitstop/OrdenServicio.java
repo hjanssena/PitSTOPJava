@@ -117,7 +117,7 @@ public class OrdenServicio {
         String query = "UPDATE OrdenesServicio SET estatus = '" + getEstatusActual() + "', tipoServicio = '" + getTipoServicio() + "', fechaPromesa = '"
                 + getFechaPromesa().toString().replace('T', ' ') + "', idAsesor = '" + getAsesor().getId()
                 + "', idTecnico = '" + getTecnico().getId() + "', idVehiculo = '" + getVehiculo().getIdVehiculo() + "', servicio = '" + getServicio()
-                + "' WHERE ID = " + getOrdenId() + ";"; 
+                + "' WHERE idOrden = " + getOrdenId() + ";"; 
         sql.UpdateQuery(query);
     }
 }

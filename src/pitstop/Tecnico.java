@@ -36,7 +36,7 @@ public class Tecnico extends Empleado {
     public void Update(){
         SqLite sql = new SqLite();
         String query = "UPDATE Empleados SET nombre = '" + getNombre() + "', apellidoP = '" + getApellidoP() + "', apellidoM = '" + getApellidoM() + "', numeroTel = '" + getTelefono() + "'"
-                + ", eMail = '" + geteMail() + "', nivel = '" + getNivelTecnico() + "' WHERE ID = '" + getId() + "';"; 
+                + ", eMail = '" + geteMail() + "', nivel = '" + getNivelTecnico() + "' WHERE IdEmpleado = '" + getId() + "';"; 
         sql.UpdateQuery(query);
     }
 }

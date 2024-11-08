@@ -25,7 +25,7 @@ public class Asesor extends Empleado {
         SqLite sql = new SqLite();
         String query = "UPDATE Empleados SET nombre = '" + getNombre() + "', apellidoP = '" + getApellidoP() + "', apellidoM = '"
                 + "" + getApellidoM() + "', numeroTel = '" + getTelefono() + "'"
-                + ", eMail = '" + geteMail() + "' WHERE ID = '" + getId() + "';";
+                + ", eMail = '" + geteMail() + "' WHERE IdEmpleado = '" + getId() + "';";
         sql.UpdateQuery(query);
     }
 }

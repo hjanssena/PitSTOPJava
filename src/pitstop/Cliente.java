@@ -85,7 +85,7 @@ public class Cliente implements Nombre {
         SqLite sql = new SqLite();
         String query = "UPDATE Clientes SET nombre = '" + getNombre() + "', apellidoP = '" + getApellidoP() + "', apellidoM = '"
                 + getApellidoM() + "', numeroTel = '" + getTelefono()
-                + "', eMail = '" + geteMail() + "' WHERE ID = '" + getIdCliente() + "';"; 
+                + "', eMail = '" + geteMail() + "' WHERE idCliente = '" + getIdCliente() + "';"; 
         sql.UpdateQuery(query);
     }
     
