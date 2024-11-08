@@ -13,7 +13,7 @@ public class Cliente implements Nombre {
     private String nombre;
     private String apellidoP;
     private String apellidoM;
-    private int telefono;
+    private String telefono;
     private String eMail;
 
     public int getIdCliente() {
@@ -44,11 +44,11 @@ public class Cliente implements Nombre {
         this.apellidoM = apellidoM;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -60,7 +60,7 @@ public class Cliente implements Nombre {
         this.eMail = eMail;
     }
 
-    public Cliente(int idCliente, String nombre, String apellidoP, String apellidoM, int telefono, String eMail) {
+    public Cliente(int idCliente, String nombre, String apellidoP, String apellidoM, String telefono, String eMail) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellidoP = apellidoP;
@@ -77,12 +77,13 @@ public class Cliente implements Nombre {
         SqLite sql = new SqLite();
         String query = "INSERT INTO Clientes (nombre, apellidoP, apellidoM, numeroTel, eMail)"
                 + " VALUES (" + getNombre() + ", " + getApellidoP() + ", " + getApellidoM() + ", " + getTelefono() + ", " + geteMail() + ");";
-        sql.ExecuteQuery(query);
+        sql.UpdateQuery(query);
     }
     
     public void Update(){
         SqLite sql = new SqLite();
         String query = "UPDATE Clientes SET nombre = " + getNombre() + ", apellidoP = " + getApellidoP() + ", apellidoM = " + getApellidoM() + ", numeroTel = " + getTelefono() + ""
                 + ", eMail = " + geteMail() + " WHERE ID = " + getIdCliente() + ";"; 
+        sql.UpdateQuery(query);
     }
 }

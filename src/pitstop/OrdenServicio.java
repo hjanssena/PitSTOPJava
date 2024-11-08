@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package pitstop;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 /**
@@ -21,7 +22,12 @@ public class OrdenServicio {
     private Asesor asesor;
     private Tecnico tecnico;
     private Vehiculo vehiculo;
+    private String servicio;
 
+    public int getOrdenId(){
+        return ordenId;
+    }
+    
     public LocalDateTime getFechaIngreso() {
         return fechaIngreso;
     }
@@ -44,6 +50,14 @@ public class OrdenServicio {
 
     public void setTipoServicio(Servicios tipoServicio) {
         this.tipoServicio = tipoServicio;
+    }
+    
+    public String getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(String servicio) {
+        this.servicio = servicio;
     }
 
     public LocalDateTime getFechaPromesa() {
@@ -78,7 +92,7 @@ public class OrdenServicio {
         this.vehiculo = vehiculo;
     }
 
-    public OrdenServicio(LocalDateTime fechaIngreso, Estatus estatusActual, Servicios tipoServicio, LocalDateTime fechaPromesa, Asesor asesor, Tecnico tecnico, Vehiculo vehiculo) {
+    public OrdenServicio(LocalDateTime fechaIngreso, Estatus estatusActual, Servicios tipoServicio, LocalDateTime fechaPromesa, Asesor asesor, Tecnico tecnico, Vehiculo vehiculo, String servicio) {
         this.fechaIngreso = fechaIngreso;
         this.estatusActual = estatusActual;
         this.tipoServicio = tipoServicio;
@@ -86,6 +100,24 @@ public class OrdenServicio {
         this.asesor = asesor;
         this.tecnico = tecnico;
         this.vehiculo = vehiculo;
+        this.servicio = servicio;
     }
     
+    public void Create(){
+        SqLite sql = new SqLite();
+        String query = "INSERT INTO OrdenesServicio (fechaCreacion, estatus, tipoServicio, fechaPromesa, idAsesor, idTecnico, idVehiculo, servicio)"
+                + " VALUES (" + "now" + ", " + getEstatusActual() + ", " + getTipoServicio() + ", "
+                + getFechaPromesa().toString().replace('T', ' ') + ", " + getAsesor().getId() + ", " + getTecnico().getId() + ", "
+                + getVehiculo().getIdVehiculo() + ", " + getServicio() + ");";
+        sql.UpdateQuery(query);
+    }
+    
+    public void Update(){
+        SqLite sql = new SqLite();
+        String query = "UPDATE OrdenesServicio SET estatus = " + getEstatusActual() + ", tipoServicio = " + getTipoServicio() + ", fechaPromesa = "
+                + getFechaPromesa().toString().replace('T', ' ') + ", idAsesor = " + getAsesor().getId()
+                + ", idTecnico = " + getTecnico().getId() + ", idVehiculo = " + getVehiculo().getIdVehiculo() + ", servicio = " + getServicio()
+                + " WHERE ID = " + getOrdenId() + ";"; 
+        sql.UpdateQuery(query);
+    }
 }

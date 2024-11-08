@@ -5,7 +5,7 @@
 package pitstop;
 
 /**
- *
+ * 
  * @author janss
  */
 public class Tecnico extends Empleado {
@@ -20,21 +20,23 @@ public class Tecnico extends Empleado {
         this.nivelTecnico = nivelTecnico;
     }
 
-    public Tecnico(int id, String nombre, String apellidoP, String apellidoM, int telefono, String email, nivel nivelTecnico) {
-        super(id, nombre, apellidoP, apellidoM, telefono, email);
+    public Tecnico(String nombre, String apellidoP, String apellidoM, String telefono, String email, nivel nivelTecnico) {
+        super(nombre, apellidoP, apellidoM, telefono, email);
         this.nivelTecnico = nivelTecnico;
     }
     
     public void Create(){
         SqLite sql = new SqLite();
-        String query = "INSERT INTO Clientes (nombre, apellidoP, apellidoM, numeroTel, eMail)"
-                + " VALUES (" + getNombre() + ", " + getApellidoP() + ", " + getApellidoM() + ", " + getTelefono() + ", " + geteMail() + ");";
-        sql.ExecuteQuery(query);
+        String query = "INSERT INTO Empleados (nombre,apellidoP,apellidoM,numeroTel,eMail,nivel)"
+                + " VALUES ('" + getNombre() + "', '" + getApellidoP() + "', '" + getApellidoM() + "', '" + getTelefono() + "', '" + geteMail() + "', '" + getNivelTecnico() + "');";
+        System.out.print(query);
+        sql.UpdateQuery(query);
     }
     
     public void Update(){
         SqLite sql = new SqLite();
-        String query = "UPDATE Clientes SET nombre = " + getNombre() + ", apellidoP = " + getApellidoP() + ", apellidoM = " + getApellidoM() + ", numeroTel = " + getTelefono() + ""
-                + ", eMail = " + geteMail() + " WHERE ID = " + getId() + ";"; 
+        String query = "UPDATE Empleados SET nombre = '" + getNombre() + "', apellidoP = '" + getApellidoP() + "', apellidoM = '" + getApellidoM() + "', numeroTel = '" + getTelefono() + "'"
+                + ", eMail = '" + geteMail() + "', nivel = '" + getNivelTecnico() + "' WHERE ID = '" + getId() + "';"; 
+        sql.UpdateQuery(query);
     }
 }

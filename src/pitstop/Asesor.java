@@ -10,8 +10,21 @@ package pitstop;
  */
 public class Asesor extends Empleado {
 
-    public Asesor(int id, String nombre, String apellidoP, String apellidoM, int telefono, String email) {
-        super(id, nombre, apellidoP, apellidoM, telefono, email);
+    public Asesor(String nombre, String apellidoP, String apellidoM, String telefono, String email) {
+        super(nombre, apellidoP, apellidoM, telefono, email);
     }
     
+    public void Create(){
+        SqLite sql = new SqLite();
+        String query = "INSERT INTO Empleados (nombre, apellidoP, apellidoM, numeroTel, eMail)"
+                + " VALUES (" + getNombre() + ", " + getApellidoP() + ", " + getApellidoM() + ", " + getTelefono() + ", " + geteMail() + ");";
+        sql.UpdateQuery(query);
+    }
+    
+    public void Update(){
+        SqLite sql = new SqLite();
+        String query = "UPDATE Empleados SET nombre = " + getNombre() + ", apellidoP = " + getApellidoP() + ", apellidoM = " + getApellidoM() + ", numeroTel = " + getTelefono() + ""
+                + ", eMail = " + geteMail() + " WHERE ID = " + getId() + ";";
+        sql.UpdateQuery(query);
+    }
 }

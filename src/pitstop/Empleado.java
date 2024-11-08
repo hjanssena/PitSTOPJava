@@ -13,7 +13,7 @@ public abstract class Empleado implements Nombre {
     private String nombre;
     private String apellidoP;
     private String apellidoM;
-    private int telefono;
+    private String telefono;
     private String email;
     
     public int getId(){
@@ -44,11 +44,11 @@ public abstract class Empleado implements Nombre {
         this.apellidoM = apellidoM;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -60,8 +60,7 @@ public abstract class Empleado implements Nombre {
         this.email = email;
     }
 
-    public Empleado(int id, String nombre, String apellidoP, String apellidoM, int telefono, String email) {
-        idEmpleado = id;
+    public Empleado(String nombre, String apellidoP, String apellidoM, String telefono, String email) {
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
