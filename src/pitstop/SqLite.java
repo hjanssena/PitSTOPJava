@@ -4,7 +4,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 
 public class SqLite {
 //Funcion para escribir en la base de datos, pasar como argumento el query con la instruccion deseada
@@ -137,6 +139,38 @@ public class SqLite {
                 ArrayList<Cliente> cliente = RetrieveClientes("Select * From Clientes Where idCliente = " + idCliente);
                 
                 Vehiculo x = new Vehiculo(idVehiculo, serie, marca, modelo, placa, kilometraje, cliente.get(0));
+                resultado.add(x);  
+            }
+            return resultado;
+        } catch (SQLException e) {
+            e.printStackTrace(System.err);
+            return null;
+        }
+    }
+    
+    public ArrayList<OrdenServicio> RetrieveOrdenServicio(String query){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try 
+        (
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:data.db");
+            Statement stmt = conn.createStatement();
+        ) 
+        {
+            stmt.setQueryTimeout(30);
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<OrdenServicio> resultado = new ArrayList<OrdenServicio>();
+            while(rs.next()){
+                int ordenId = rs.getInt("idOrden");
+                Date fechaIngreso = Date.valueOf(rs.getString("fechaCreacion"));
+                OrdenServicio.Estatus estatusActual = OrdenServicio.Estatus.valueOf(rs.getString("estatus"));
+                OrdenServicio.Servicios tipoServicio = OrdenServicio.Servicios.valueOf(rs.getString("tipoServicio"));
+                Date fechaPromesa = Date.valueOf(rs.getString("fechaPromesa"));
+                Asesor asesor = RetrieveAsesores("Select * From Empleados Where idEmpleado = " + rs.getInt("idAsesor")).get(0);
+                Tecnico tecnico = RetrieveTecnicos("Select * From Empleados Where idEmpleado = " + rs.getInt("idTecnico")).get(0);
+                Vehiculo vehiculo = RetrieveVehiculos("Select * From Vehiculos Where idVehiculo = " + rs.getInt("idVehiculo")).get(0);
+                String servicio = rs.getString("servicio");
+                
+                OrdenServicio x = new OrdenServicio(ordenId, fechaIngreso, estatusActual, tipoServicio, fechaPromesa, asesor, tecnico, vehiculo, servicio);
                 resultado.add(x);  
             }
             return resultado;

@@ -4,7 +4,6 @@
  */
 package pitstop;
 import java.sql.Date;
-import java.time.LocalDateTime;
 
 /**
  *
@@ -15,10 +14,10 @@ public class OrdenServicio {
     public enum Servicios {Preventivo, Correctivo};
     
     private int ordenId;
-    private LocalDateTime fechaIngreso;
+    private Date fechaIngreso;
     private Estatus estatusActual;
     private Servicios tipoServicio;
-    private LocalDateTime fechaPromesa;
+    private Date fechaPromesa;
     private Asesor asesor;
     private Tecnico tecnico;
     private Vehiculo vehiculo;
@@ -28,11 +27,11 @@ public class OrdenServicio {
         return ordenId;
     }
     
-    public LocalDateTime getFechaIngreso() {
+    public Date getFechaIngreso() {
         return fechaIngreso;
     }
 
-    public void setFechaIngreso(LocalDateTime fechaIngreso) {
+    public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
@@ -60,11 +59,11 @@ public class OrdenServicio {
         this.servicio = servicio;
     }
 
-    public LocalDateTime getFechaPromesa() {
+    public Date getFechaPromesa() {
         return fechaPromesa;
     }
 
-    public void setFechaPromesa(LocalDateTime fechaPromesa) {
+    public void setFechaPromesa(Date fechaPromesa) {
         this.fechaPromesa = fechaPromesa;
     }
 
@@ -92,7 +91,8 @@ public class OrdenServicio {
         this.vehiculo = vehiculo;
     }
 
-    public OrdenServicio(LocalDateTime fechaIngreso, Estatus estatusActual, Servicios tipoServicio, LocalDateTime fechaPromesa, Asesor asesor, Tecnico tecnico, Vehiculo vehiculo, String servicio) {
+    public OrdenServicio(int ordenId, Date fechaIngreso, Estatus estatusActual, Servicios tipoServicio, Date fechaPromesa, Asesor asesor, Tecnico tecnico, Vehiculo vehiculo, String servicio) {
+        this.ordenId = ordenId;
         this.fechaIngreso = fechaIngreso;
         this.estatusActual = estatusActual;
         this.tipoServicio = tipoServicio;
@@ -106,9 +106,9 @@ public class OrdenServicio {
     public void Create(){
         SqLite sql = new SqLite();
         String query = "INSERT INTO OrdenesServicio (fechaCreacion, estatus, tipoServicio, fechaPromesa, idAsesor, idTecnico, idVehiculo, servicio)"
-                + " VALUES (" + "now" + ", '" + getEstatusActual() + "', '" + getTipoServicio() + "', '"
-                + getFechaPromesa().toString().replace('T', ' ') + "', '" + getAsesor().getId() + "', '" + getTecnico().getId() + "', '"
-                + getVehiculo().getIdVehiculo() + "', '" + getServicio() + "');";
+                + " VALUES ('" + getFechaIngreso().toString() + "', '" + getEstatusActual() + "', '" + getTipoServicio() + "', '"
+                + getFechaPromesa().toString() + "', " + getAsesor().getId() + ", " + getTecnico().getId() + ", "
+                + getVehiculo().getIdVehiculo() + ", '" + getServicio() + "');";
         sql.UpdateQuery(query);
     }
     
