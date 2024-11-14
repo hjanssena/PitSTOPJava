@@ -4,8 +4,11 @@
  */
 package Menu;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +22,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        pMarco.setLayout(new BoxLayout(pMarco, BoxLayout.Y_AXIS));
+        generarAvisoOrden();
     }
 
     /**
@@ -278,13 +283,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbPartes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbTrabajo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbDetalles)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bEditar)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout pMarcoLayout = new javax.swing.GroupLayout(pMarco);
@@ -300,8 +305,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             pMarcoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pMarcoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pAviso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addComponent(pAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         jScroll.setViewportView(pMarco);
@@ -330,7 +335,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void cbTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrabajoActionPerformed
         // TODO add your handling code here:
-        new AvisoSeguridad().setVisible(true);
+        int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);
+        if (a == 0){
+            cbTrabajo.setSelected(true);
+            cbTrabajo.setEnabled(false);
+        }else {
+            cbTrabajo.setSelected(false);
+        }
+        desactivado();
     }//GEN-LAST:event_cbTrabajoActionPerformed
 
     private void bOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenActionPerformed
@@ -339,13 +351,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void cbPartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartesActionPerformed
         // TODO add your handling code here:
-        new AvisoSeguridad().setVisible(true);
-        AvisoSeguridad check = new AvisoSeguridad();
-        if (check.evento() == true){
-                cbPartes.setEnabled(false); // Vuelve a seleccionar el checkbox si el usuario intenta desmarcarlo
-        }else if (check.evento() == false){
+        int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);    
+        if (a == 0){
             cbPartes.setSelected(true);
-        }  
+            cbPartes.setEnabled(false);
+        }else {
+            cbPartes.setSelected(false);
+        }
+        desactivado();
     }//GEN-LAST:event_cbPartesActionPerformed
 
     private void bHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHistorialActionPerformed
@@ -354,15 +367,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void cbDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesActionPerformed
         // TODO add your handling code here:
-        new AvisoSeguridad().setVisible(true);
+        int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);
+        
+        if (a == 0){
+            cbDetalles.setSelected(true);
+            cbDetalles.setEnabled(false);
+        }else {
+            cbDetalles.setSelected(false);
+        }
+        desactivado();
     }//GEN-LAST:event_cbDetallesActionPerformed
 
     private void bEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmpleadosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bEmpleadosActionPerformed
+    
+    private void desactivado(){ 
+        if (!cbDetalles.isEnabled() && !cbTrabajo.isEnabled() && !cbPartes.isEnabled()) {
+            pAviso.setVisible(false);
+        }
+    }
 
-    private void bloquearCheckbox(){
+    private void generarAvisoOrden(){
         
+        for (int i=0; i<5; i++) {
+            pMarco.add(pAviso);
+            pMarco.add(Box.createVerticalStrut(5)); // Espacio entre paneles
+            pMarco.revalidate();
+            pMarco.repaint();
+        }
     }
     /**
      * @param args the command line arguments
@@ -406,9 +439,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton bEmpleados;
     private javax.swing.JButton bHistorial;
     private javax.swing.JButton bOrden;
-    private javax.swing.JCheckBox cbDetalles;
-    private javax.swing.JCheckBox cbPartes;
-    private javax.swing.JCheckBox cbTrabajo;
+    public javax.swing.JCheckBox cbDetalles;
+    public javax.swing.JCheckBox cbPartes;
+    public javax.swing.JCheckBox cbTrabajo;
     private javax.swing.JPanel jButtons;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
