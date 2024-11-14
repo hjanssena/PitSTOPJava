@@ -4,6 +4,7 @@
  */
 package Menu;
 
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
 /**
@@ -32,7 +33,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButtons = new javax.swing.JPanel();
         bOrden = new javax.swing.JButton();
         bHistorial = new javax.swing.JButton();
-        bConfiguration = new javax.swing.JButton();
+        bClientes = new javax.swing.JButton();
+        bEmpleados = new javax.swing.JButton();
         jScroll = new javax.swing.JScrollPane();
         pMarco = new javax.swing.JPanel();
         pAviso = new javax.swing.JPanel();
@@ -60,14 +62,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pagina Principal");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setName("paginaPrincipal"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         jButtons.setMaximumSize(new java.awt.Dimension(1920, 1080));
 
         bOrden.setText("Nueva Orden");
+        bOrden.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         bOrden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bOrdenActionPerformed(evt);
@@ -75,11 +76,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         bHistorial.setText("Historial");
-
-        bConfiguration.setText("Configuaracion");
-        bConfiguration.addActionListener(new java.awt.event.ActionListener() {
+        bHistorial.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
+        bHistorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bConfigurationActionPerformed(evt);
+                bHistorialActionPerformed(evt);
+            }
+        });
+
+        bClientes.setText("Clientes");
+        bClientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
+        bClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bClientesActionPerformed(evt);
+            }
+        });
+
+        bEmpleados.setText("Empleados");
+        bEmpleados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
+        bEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEmpleadosActionPerformed(evt);
             }
         });
 
@@ -89,28 +105,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bOrden, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bConfiguration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jButtonsLayout.setVerticalGroup(
             jButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jButtonsLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bOrden, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                    .addComponent(bConfiguration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                    .addComponent(bHistorial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(bHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pMarco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         pAviso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pAviso.setMinimumSize(new java.awt.Dimension(1000, 136));
+        pAviso.setMinimumSize(new java.awt.Dimension(850, 136));
+        pAviso.setPreferredSize(new java.awt.Dimension(850, 158));
 
         pTiposDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         pTiposDatos.setMaximumSize(new java.awt.Dimension(104, 114));
@@ -118,20 +138,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jSeparator1.setMaximumSize(null);
 
         jLabel1.setText("Nombre");
-        jLabel1.setMaximumSize(null);
 
         jLabel2.setText("Vehiculo");
-        jLabel2.setMaximumSize(null);
 
         jSeparator4.setMaximumSize(null);
 
         jLabel3.setText("Fecha de entrega");
-        jLabel3.setMaximumSize(null);
 
         jSeparator5.setMaximumSize(null);
 
         jLabel4.setText("Servicio");
-        jLabel4.setMaximumSize(null);
 
         javax.swing.GroupLayout pTiposDatosLayout = new javax.swing.GroupLayout(pTiposDatos);
         pTiposDatos.setLayout(pTiposDatosLayout);
@@ -142,8 +158,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pTiposDatosLayout.createSequentialGroup()
                         .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
                         .addGap(0, 5, Short.MAX_VALUE))
                     .addGroup(pTiposDatosLayout.createSequentialGroup()
                         .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,19 +176,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pTiposDatosLayout.setVerticalGroup(
             pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pTiposDatosLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -187,9 +203,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         cbTrabajo.setText("Trabajo");
-        cbTrabajo.setMaximumSize(new java.awt.Dimension(70, 24));
-        cbTrabajo.setMinimumSize(new java.awt.Dimension(70, 24));
-        cbTrabajo.setPreferredSize(new java.awt.Dimension(70, 24));
         cbTrabajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTrabajoActionPerformed(evt);
@@ -197,6 +210,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         cbDetalles.setText("Detalles");
+        cbDetalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDetallesActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
@@ -213,6 +231,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
+        jTextArea4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jScrollPane4.setViewportView(jTextArea4);
 
         bEditar.setText("Editar");
@@ -226,15 +245,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(pTiposDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane4))
                 .addGap(18, 18, 18)
                 .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pAvisoLayout.createSequentialGroup()
                         .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbTrabajo)
                             .addComponent(cbDetalles)
                             .addComponent(cbPartes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
@@ -260,7 +279,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbPartes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbTrabajo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbDetalles)
                         .addGap(18, 18, 18)
@@ -274,14 +293,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             pMarcoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pMarcoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pAviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pAviso, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pMarcoLayout.setVerticalGroup(
             pMarcoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pMarcoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pAviso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         jScroll.setViewportView(pMarco);
@@ -291,12 +311,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
+            .addComponent(jScroll)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addComponent(jScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -304,12 +324,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bConfigurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bConfigurationActionPerformed
+    private void bClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bConfigurationActionPerformed
+    }//GEN-LAST:event_bClientesActionPerformed
 
     private void cbTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrabajoActionPerformed
         // TODO add your handling code here:
+        new AvisoSeguridad().setVisible(true);
     }//GEN-LAST:event_cbTrabajoActionPerformed
 
     private void bOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenActionPerformed
@@ -318,8 +339,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void cbPartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartesActionPerformed
         // TODO add your handling code here:
+        new AvisoSeguridad().setVisible(true);
+        AvisoSeguridad check = new AvisoSeguridad();
+        if (check.evento() == true){
+                cbPartes.setEnabled(false); // Vuelve a seleccionar el checkbox si el usuario intenta desmarcarlo
+        }else if (check.evento() == false){
+            cbPartes.setSelected(true);
+        }  
     }//GEN-LAST:event_cbPartesActionPerformed
-    
+
+    private void bHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHistorialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bHistorialActionPerformed
+
+    private void cbDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesActionPerformed
+        // TODO add your handling code here:
+        new AvisoSeguridad().setVisible(true);
+    }//GEN-LAST:event_cbDetallesActionPerformed
+
+    private void bEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmpleadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bEmpleadosActionPerformed
+
+    private void bloquearCheckbox(){
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -357,8 +401,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bConfiguration;
+    private javax.swing.JButton bClientes;
     private javax.swing.JButton bEditar;
+    private javax.swing.JButton bEmpleados;
     private javax.swing.JButton bHistorial;
     private javax.swing.JButton bOrden;
     private javax.swing.JCheckBox cbDetalles;
