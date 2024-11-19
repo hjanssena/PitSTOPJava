@@ -4,8 +4,6 @@
  */
 package Menu;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,8 +20,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        pMarco.setLayout(new BoxLayout(pMarco, BoxLayout.Y_AXIS));
-        generarAvisoOrden();
+        //generarAvisoOrden();
     }
 
     /**
@@ -42,27 +39,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         bEmpleados = new javax.swing.JButton();
         jScroll = new javax.swing.JScrollPane();
         pMarco = new javax.swing.JPanel();
-        pAviso = new javax.swing.JPanel();
-        pTiposDatos = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-        cbPartes = new javax.swing.JCheckBox();
-        cbTrabajo = new javax.swing.JCheckBox();
-        cbDetalles = new javax.swing.JCheckBox();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        bEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pagina Principal");
@@ -110,13 +86,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bOrden, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(bOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addComponent(bHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(bClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addComponent(bEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jButtonsLayout.setVerticalGroup(
@@ -132,183 +108,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         );
 
         pMarco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        pAviso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pAviso.setMinimumSize(new java.awt.Dimension(850, 136));
-        pAviso.setPreferredSize(new java.awt.Dimension(850, 158));
-
-        pTiposDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        pTiposDatos.setMaximumSize(new java.awt.Dimension(104, 114));
-
-        jSeparator1.setMaximumSize(null);
-
-        jLabel1.setText("Nombre");
-
-        jLabel2.setText("Vehiculo");
-
-        jSeparator4.setMaximumSize(null);
-
-        jLabel3.setText("Fecha de entrega");
-
-        jSeparator5.setMaximumSize(null);
-
-        jLabel4.setText("Servicio");
-
-        javax.swing.GroupLayout pTiposDatosLayout = new javax.swing.GroupLayout(pTiposDatos);
-        pTiposDatos.setLayout(pTiposDatosLayout);
-        pTiposDatosLayout.setHorizontalGroup(
-            pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pTiposDatosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pTiposDatosLayout.createSequentialGroup()
-                        .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(0, 5, Short.MAX_VALUE))
-                    .addGroup(pTiposDatosLayout.createSequentialGroup()
-                        .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pTiposDatosLayout.createSequentialGroup()
-                                .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
-        );
-        pTiposDatosLayout.setVerticalGroup(
-            pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pTiposDatosLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        cbPartes.setText("Partes");
-        cbPartes.setMaximumSize(new java.awt.Dimension(70, 24));
-        cbPartes.setMinimumSize(new java.awt.Dimension(70, 24));
-        cbPartes.setPreferredSize(new java.awt.Dimension(70, 24));
-        cbPartes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbPartesActionPerformed(evt);
-            }
-        });
-
-        cbTrabajo.setText("Trabajo");
-        cbTrabajo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbTrabajoActionPerformed(evt);
-            }
-        });
-
-        cbDetalles.setText("Detalles");
-        cbDetalles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbDetallesActionPerformed(evt);
-            }
-        });
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
-
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jTextArea4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jScrollPane4.setViewportView(jTextArea4);
-
-        bEditar.setText("Editar");
-
-        javax.swing.GroupLayout pAvisoLayout = new javax.swing.GroupLayout(pAviso);
-        pAviso.setLayout(pAvisoLayout);
-        pAvisoLayout.setHorizontalGroup(
-            pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAvisoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pTiposDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane4))
-                .addGap(18, 18, 18)
-                .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pAvisoLayout.createSequentialGroup()
-                        .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbTrabajo)
-                            .addComponent(cbDetalles)
-                            .addComponent(cbPartes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAvisoLayout.createSequentialGroup()
-                        .addComponent(bEditar)
-                        .addGap(17, 17, 17))))
-        );
-        pAvisoLayout.setVerticalGroup(
-            pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAvisoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(pAvisoLayout.createSequentialGroup()
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(12, 12, 12)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(8, 8, 8)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(pTiposDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pAvisoLayout.createSequentialGroup()
-                        .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbPartes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbTrabajo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbDetalles)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bEditar)))
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout pMarcoLayout = new javax.swing.GroupLayout(pMarco);
-        pMarco.setLayout(pMarcoLayout);
-        pMarcoLayout.setHorizontalGroup(
-            pMarcoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pMarcoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pAviso, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pMarcoLayout.setVerticalGroup(
-            pMarcoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pMarcoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(113, Short.MAX_VALUE))
-        );
-
+        pMarco.setLayout(new java.awt.GridLayout(0, 2, 0, 20));
         jScroll.setViewportView(pMarco);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -316,12 +116,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScroll)
+            .addComponent(jScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                .addComponent(jScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -333,69 +133,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bClientesActionPerformed
 
-    private void cbTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrabajoActionPerformed
-        // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);
-        if (a == 0){
-            cbTrabajo.setSelected(true);
-            cbTrabajo.setEnabled(false);
-        }else {
-            cbTrabajo.setSelected(false);
-        }
-        desactivado();
-    }//GEN-LAST:event_cbTrabajoActionPerformed
-
     private void bOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenActionPerformed
         // TODO add your handling code here:
+        Aviso aviso = new Aviso(); 
+        pMarco.add(aviso);
+        pMarco.updateUI();
+        aviso.restore = this;
     }//GEN-LAST:event_bOrdenActionPerformed
-
-    private void cbPartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartesActionPerformed
-        // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);    
-        if (a == 0){
-            cbPartes.setSelected(true);
-            cbPartes.setEnabled(false);
-        }else {
-            cbPartes.setSelected(false);
-        }
-        desactivado();
-    }//GEN-LAST:event_cbPartesActionPerformed
 
     private void bHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHistorialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bHistorialActionPerformed
 
-    private void cbDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesActionPerformed
-        // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);
-        
-        if (a == 0){
-            cbDetalles.setSelected(true);
-            cbDetalles.setEnabled(false);
-        }else {
-            cbDetalles.setSelected(false);
-        }
-        desactivado();
-    }//GEN-LAST:event_cbDetallesActionPerformed
-
     private void bEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmpleadosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bEmpleadosActionPerformed
     
-    private void desactivado(){ 
-        if (!cbDetalles.isEnabled() && !cbTrabajo.isEnabled() && !cbPartes.isEnabled()) {
-            pAviso.setVisible(false);
-        }
-    }
 
     private void generarAvisoOrden(){
         
-        for (int i=0; i<5; i++) {
-            pMarco.add(pAviso);
-            pMarco.add(Box.createVerticalStrut(5)); // Espacio entre paneles
-            pMarco.revalidate();
-            pMarco.repaint();
-        }
+        
+            //pMarco.add(pAviso);
+            //pMarco.updateUI();
+        
     }
     /**
      * @param args the command line arguments
@@ -435,32 +195,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bClientes;
-    private javax.swing.JButton bEditar;
     private javax.swing.JButton bEmpleados;
     private javax.swing.JButton bHistorial;
     private javax.swing.JButton bOrden;
-    public javax.swing.JCheckBox cbDetalles;
-    public javax.swing.JCheckBox cbPartes;
-    public javax.swing.JCheckBox cbTrabajo;
     private javax.swing.JPanel jButtons;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScroll;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JPanel pAviso;
-    private javax.swing.JPanel pMarco;
-    private javax.swing.JPanel pTiposDatos;
+    public javax.swing.JPanel pMarco;
     // End of variables declaration//GEN-END:variables
 }
