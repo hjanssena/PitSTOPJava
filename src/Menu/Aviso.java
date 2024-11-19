@@ -83,16 +83,13 @@ public class Aviso extends javax.swing.JPanel {
             .addGroup(pTiposDatosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pTiposDatosLayout.createSequentialGroup()
-                        .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTiposDatosLayout.createSequentialGroup()
                         .addGap(0, 3, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addContainerGap())))
+                        .addComponent(jLabel3)))
+                .addContainerGap())
             .addGroup(pTiposDatosLayout.createSequentialGroup()
                 .addGroup(pTiposDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pTiposDatosLayout.createSequentialGroup()
@@ -344,9 +341,9 @@ public class Aviso extends javax.swing.JPanel {
     public javax.swing.JSeparator jSeparator5;
     public javax.swing.JPanel pAviso;
     public javax.swing.JPanel pTiposDatos;
-    private javax.swing.JTextField tFecha;
-    private javax.swing.JTextField tNombre;
-    private javax.swing.JTextField tServicio;
-    private javax.swing.JTextField tVehiculo;
+    public javax.swing.JTextField tFecha;
+    public javax.swing.JTextField tNombre;
+    public javax.swing.JTextField tServicio;
+    public javax.swing.JTextField tVehiculo;
     // End of variables declaration//GEN-END:variables
 }

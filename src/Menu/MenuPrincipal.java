@@ -7,7 +7,9 @@ package Menu;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
+import pitstop.OrdenServicio;
+import pitstop.SqLite;
 /**
  *
  * @author edwin
@@ -20,6 +22,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        generarInfo();
         //generarAvisoOrden();
     }
 
@@ -138,7 +141,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Aviso aviso = new Aviso(); 
         pMarco.add(aviso);
         pMarco.updateUI();
-        aviso.restore = this;
+        
     }//GEN-LAST:event_bOrdenActionPerformed
 
     private void bHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHistorialActionPerformed
@@ -150,11 +153,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_bEmpleadosActionPerformed
     
 
-    private void generarAvisoOrden(){
-        
-        
-            //pMarco.add(pAviso);
-            //pMarco.updateUI();
+    private void generarInfo(){
+        SqLite sql = new SqLite();
+        ArrayList<OrdenServicio> ordenes = sql.RetrieveOrdenServicio("select * from OrdenesServicio");
+        for (OrdenServicio orden : ordenes){
+            Aviso aviso = new Aviso(); 
+            pMarco.add(aviso);
+            pMarco.updateUI();
+            aviso.restore = this;
+            aviso.tFecha.setText(orden.getFechaPromesa().toString());
+            aviso.tNombre.setText(orden.getVehiculo().getCliente().getFullName());
+            aviso.tServicio.setText(orden.getServicio());
+            aviso.tVehiculo.setText("Modelo" + orden.getVehiculo().getModelo() + "\t" +orden.getVehiculo().getMarca() + "\t" + orden.getVehiculo().getPlaca());
+        }
         
     }
     /**
