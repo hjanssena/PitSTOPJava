@@ -10,6 +10,7 @@ import java.sql.Date;
 public class PitStop {
 
     public static void main(String[] args) {
-        Testing.ProbarOrdenes();
+        Menu.MenuPrincipal menu = new Menu.MenuPrincipal();
+        menu.setVisible(true);
     }
 }
