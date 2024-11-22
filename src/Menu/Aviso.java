@@ -46,9 +46,9 @@ public class Aviso extends javax.swing.JPanel {
         tFecha = new javax.swing.JTextField();
         tServicio = new javax.swing.JTextField();
 
-        setMaximumSize(new java.awt.Dimension(520, 150));
-        setMinimumSize(new java.awt.Dimension(520, 150));
-        setPreferredSize(new java.awt.Dimension(520, 150));
+        setMaximumSize(new java.awt.Dimension(530, 160));
+        setMinimumSize(new java.awt.Dimension(530, 160));
+        setPreferredSize(new java.awt.Dimension(530, 160));
 
         pAviso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pAviso.setAlignmentX(0.0F);
@@ -87,7 +87,7 @@ public class Aviso extends javax.swing.JPanel {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pTiposDatosLayout.createSequentialGroup()
-                        .addGap(0, 3, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3)))
                 .addContainerGap())
             .addGroup(pTiposDatosLayout.createSequentialGroup()
@@ -243,7 +243,7 @@ public class Aviso extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -252,7 +252,7 @@ public class Aviso extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

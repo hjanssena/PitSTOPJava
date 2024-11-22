@@ -134,6 +134,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void bClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bClientesActionPerformed
         // TODO add your handling code here:
+        new ListaClientes().setVisible(true);
     }//GEN-LAST:event_bClientesActionPerformed
 
     private void bOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenActionPerformed
@@ -165,7 +166,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             aviso.tNombre.setText(orden.getVehiculo().getCliente().getFullName());
             aviso.tServicio.setText(orden.getServicio());
             aviso.tVehiculo.setText("Modelo" + orden.getVehiculo().getModelo() + "\t" +orden.getVehiculo().getMarca() + "\t" + orden.getVehiculo().getPlaca());
-        }
+        }        
+    }
+    
+    public void crearOrden(){
         
     }
     /**
