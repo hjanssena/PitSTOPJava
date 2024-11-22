@@ -3,19 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Menu;
+import java.util.ArrayList;
 import pitstop.Cliente;
+import pitstop.SqLite;
 
 /**
  *
  * @author janss
  */
 public class NuevoCliente extends javax.swing.JFrame {
-
+    public boolean open;
+    public int id;
     /**
      * Creates new form NuevoCliente
      */
-    public NuevoCliente() {
+    
+    public NuevoCliente(boolean open, int id) {
         initComponents();
+        this.open = open;
+        this.id = id;
     }
 
     /**
@@ -45,6 +51,11 @@ public class NuevoCliente extends javax.swing.JFrame {
         jTextField5.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Nombres");
 
@@ -70,54 +81,46 @@ public class NuevoCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Nuevo cliente");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel6.setText("Cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(btnCancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addComponent(btnAceptar)
+                .addGap(78, 78, 78))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(78, 78, 78)
-                        .addComponent(txtNombre))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(98, 98, 98)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(39, 39, 39)
-                        .addComponent(txtApellidoP, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(35, 35, 35)
-                        .addComponent(txtApellidoM, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(81, 81, 81)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(txtApellidoP, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtApellidoM, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtEmail))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancelar)
-                .addGap(88, 88, 88)
-                .addComponent(btnAceptar)
-                .addGap(79, 79, 79))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
                 .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(165, 165, 165))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -137,8 +140,8 @@ public class NuevoCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
                 .addGap(18, 18, 18))
@@ -148,14 +151,27 @@ public class NuevoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String nombre = txtNombre.getText();
-        String apellidoP = txtApellidoP.getText();
-        String apellidoM = txtApellidoM.getText();
-        String telefono = txtTelefono.getText();
-        String eMail = txtEmail.getText();
+        ListaClientes valor = new ListaClientes();
+        if (open){
+            String nombre = txtNombre.getText();
+            String apellidoP = txtApellidoP.getText();
+            String apellidoM = txtApellidoM.getText();
+            String telefono = txtTelefono.getText();
+            String eMail = txtEmail.getText();
         
-        Cliente cliente = new Cliente(0, nombre, apellidoP, apellidoM, telefono, eMail);
-        cliente.Create();
+            Cliente cliente = new Cliente(valor.idCliente, nombre, apellidoP, apellidoM, telefono, eMail);
+            cliente.Update();
+        } else {
+            String nombre = txtNombre.getText();
+            String apellidoP = txtApellidoP.getText();
+            String apellidoM = txtApellidoM.getText();
+            String telefono = txtTelefono.getText();
+            String eMail = txtEmail.getText();
+        
+            Cliente cliente = new Cliente(0, nombre, apellidoP, apellidoM, telefono, eMail);
+            cliente.Create();
+        }
+        
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -163,6 +179,25 @@ public class NuevoCliente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        if (open){
+            editarCliente(id);
+        }
+    }//GEN-LAST:event_formWindowOpened
+    public void editarCliente(int id){
+        SqLite sql = new SqLite();
+        ArrayList<Cliente> clientes = sql.RetrieveClientes("select * from Clientes");
+        for(Cliente cliente : clientes){
+            if (cliente.getIdCliente() == id){
+                txtNombre.setText(cliente.getNombre());
+                txtApellidoP.setText(cliente.getApellidoP());
+                txtApellidoM.setText(cliente.getApellidoM());
+                txtTelefono.setText(cliente.getTelefono());
+                txtEmail.setText(cliente.geteMail());
+            }
+        }    
+    }
     /**
      * @param args the command line arguments
      */
@@ -193,7 +228,7 @@ public class NuevoCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NuevoCliente().setVisible(true);
+              
             }
         });
     }
@@ -208,10 +243,10 @@ public class NuevoCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField txtApellidoM;
-    private javax.swing.JTextField txtApellidoP;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
+    public javax.swing.JTextField txtApellidoM;
+    public javax.swing.JTextField txtApellidoP;
+    public javax.swing.JTextField txtEmail;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
