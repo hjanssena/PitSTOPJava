@@ -4,24 +4,30 @@
  */
 package Menu;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import pitstop.Cliente;
 import pitstop.SqLite;
+import pitstop.Vehiculo;
 
 /**
  *
  * @author janss
  */
-public class NuevoCliente extends javax.swing.JFrame {
-    public boolean open;
+public class NuevoVehiculo extends javax.swing.JFrame {
+    public boolean editMode;
     public int id;
+    public Cliente cliente;
     /**
      * Creates new form NuevoCliente
      */
     
-    public NuevoCliente(boolean open, int id) {
+    public NuevoVehiculo(boolean editMode, int id, int clienteId) {
+        SqLite sql = new SqLite();
         initComponents();
-        this.open = open;
+        this.editMode = editMode;
         this.id = id;
+        cliente = sql.RetrieveClientes("SELECT * FROM CLIENTES WHERE idCliente = " + clienteId).get(0);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -34,16 +40,16 @@ public class NuevoCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField5 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtApellidoP = new javax.swing.JTextField();
-        txtApellidoM = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
+        lblMarca = new javax.swing.JLabel();
+        lblModelo = new javax.swing.JLabel();
+        lblSerie = new javax.swing.JLabel();
+        lblPlaca = new javax.swing.JLabel();
+        lblKilometrake = new javax.swing.JLabel();
+        txtMarca = new javax.swing.JTextField();
+        txtSerie = new javax.swing.JTextField();
+        txtModelo = new javax.swing.JTextField();
+        txtPlaca = new javax.swing.JTextField();
+        txtKilometrake = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -57,15 +63,15 @@ public class NuevoCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nombres");
+        lblMarca.setText("Marca");
 
-        jLabel2.setText("Apellido Materno");
+        lblModelo.setText("Modelo");
 
-        jLabel3.setText("Apellido Paterno");
+        lblSerie.setText("Serie");
 
-        jLabel4.setText("Telefono");
+        lblPlaca.setText("Placa");
 
-        jLabel5.setText("Email");
+        lblKilometrake.setText("Kilometraje");
 
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +88,7 @@ public class NuevoCliente extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel6.setText("Cliente");
+        jLabel6.setText("Vehiculo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,18 +103,18 @@ public class NuevoCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(lblModelo)
+                    .addComponent(lblMarca)
+                    .addComponent(lblSerie)
+                    .addComponent(lblPlaca)
+                    .addComponent(lblKilometrake))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                    .addComponent(txtApellidoP, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtApellidoM, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmail))
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                    .addComponent(txtSerie, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtKilometrake))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -122,24 +128,24 @@ public class NuevoCliente extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMarca)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblModelo))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtApellidoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSerie)
+                    .addComponent(txtSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPlaca)
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblKilometrake)
+                    .addComponent(txtKilometrake, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAceptar)
@@ -152,24 +158,24 @@ public class NuevoCliente extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         ListaClientes valor = new ListaClientes();
-        if (open){
-            String nombre = txtNombre.getText();
-            String apellidoP = txtApellidoP.getText();
-            String apellidoM = txtApellidoM.getText();
-            String telefono = txtTelefono.getText();
-            String eMail = txtEmail.getText();
+        if (editMode){
+            String marca = txtMarca.getText();
+            String serie = txtSerie.getText();
+            String modelo = txtModelo.getText();
+            String placa = txtPlaca.getText();
+            String kilometraje = txtKilometrake.getText();
         
-            Cliente cliente = new Cliente(id, nombre, apellidoP, apellidoM, telefono, eMail);
-            cliente.Update();
+            Vehiculo vehiculo = new Vehiculo(id, serie, marca, modelo, placa, kilometraje, cliente);
+            vehiculo.Update();
         } else {
-            String nombre = txtNombre.getText();
-            String apellidoP = txtApellidoP.getText();
-            String apellidoM = txtApellidoM.getText();
-            String telefono = txtTelefono.getText();
-            String eMail = txtEmail.getText();
+            String marca = txtMarca.getText();
+            String serie = txtSerie.getText();
+            String modelo = txtModelo.getText();
+            String placa = txtPlaca.getText();
+            String kilometraje = txtKilometrake.getText();
         
-            Cliente cliente = new Cliente(0, nombre, apellidoP, apellidoM, telefono, eMail);
-            cliente.Create();
+            Vehiculo vehiculo = new Vehiculo(0, serie, marca, modelo, placa, kilometraje, cliente);
+            vehiculo.Create();
         }
         
         this.setVisible(false);
@@ -181,22 +187,18 @@ public class NuevoCliente extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        if (open){
-            editarCliente(id);
+        if (editMode){
+            editarVehiculo(id);
         }
     }//GEN-LAST:event_formWindowOpened
-    public void editarCliente(int id){
+    public void editarVehiculo(int id){
         SqLite sql = new SqLite();
-        ArrayList<Cliente> clientes = sql.RetrieveClientes("select * from Clientes");
-        for(Cliente cliente : clientes){
-            if (cliente.getIdCliente() == id){
-                txtNombre.setText(cliente.getNombre());
-                txtApellidoP.setText(cliente.getApellidoP());
-                txtApellidoM.setText(cliente.getApellidoM());
-                txtTelefono.setText(cliente.getTelefono());
-                txtEmail.setText(cliente.geteMail());
-            }
-        }    
+        Vehiculo vehiculo = sql.RetrieveVehiculos("select * from Vehiculos WHERE idVehiculo = " + id).get(0);
+        txtMarca.setText(vehiculo.getMarca());
+        txtSerie.setText(vehiculo.getnSerie());
+        txtModelo.setText(vehiculo.getModelo());
+        txtPlaca.setText(vehiculo.getPlaca());
+        txtKilometrake.setText(vehiculo.getKilometraje());
     }
     /**
      * @param args the command line arguments
@@ -215,14 +217,15 @@ public class NuevoCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NuevoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NuevoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NuevoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NuevoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NuevoVehiculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -236,17 +239,17 @@ public class NuevoCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField5;
-    public javax.swing.JTextField txtApellidoM;
-    public javax.swing.JTextField txtApellidoP;
-    public javax.swing.JTextField txtEmail;
-    public javax.swing.JTextField txtNombre;
-    public javax.swing.JTextField txtTelefono;
+    private javax.swing.JLabel lblKilometrake;
+    private javax.swing.JLabel lblMarca;
+    private javax.swing.JLabel lblModelo;
+    private javax.swing.JLabel lblPlaca;
+    private javax.swing.JLabel lblSerie;
+    public javax.swing.JTextField txtKilometrake;
+    public javax.swing.JTextField txtMarca;
+    public javax.swing.JTextField txtModelo;
+    public javax.swing.JTextField txtPlaca;
+    public javax.swing.JTextField txtSerie;
     // End of variables declaration//GEN-END:variables
 }

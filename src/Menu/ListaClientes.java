@@ -4,11 +4,9 @@
  */
 package Menu;
 
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
-import pitstop.Cliente;
-import pitstop.SqLite;
-import pitstop.Vehiculo;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JFrame;
 import pitstop.tablas;
 
 /**
@@ -18,6 +16,7 @@ import pitstop.tablas;
 public class ListaClientes extends javax.swing.JFrame {
     public tablas tablas = new tablas();
     public int idCliente;
+    public int idVehiculo;
     /**
      * Creates new form ListaClientes
      */
@@ -25,7 +24,7 @@ public class ListaClientes extends javax.swing.JFrame {
         initComponents();
         tablaClientes();
         desactivarEdicion();
-       
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -47,6 +46,18 @@ public class ListaClientes extends javax.swing.JFrame {
         tClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         lClientes.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         lClientes.setText("Clientes");
@@ -69,6 +80,11 @@ public class ListaClientes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tVehiculosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tVehiculos);
 
         lVehiculos.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
@@ -142,15 +158,28 @@ public class ListaClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bEditarVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarVehiculosActionPerformed
-        // TODO add your handling code here:
+        boolean open = true;
+        NuevoVehiculo edit = new NuevoVehiculo(open, idVehiculo, idCliente);
+        edit.btnAceptar.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent evt){
+                tablaClientes();
+                tablaVehiculos(idCliente);
+            }
+        });
+        edit.setVisible(true);
     }//GEN-LAST:event_bEditarVehiculosActionPerformed
 
     private void bEditarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarClientesActionPerformed
         // TODO add your handling code here:
         boolean open = true;
         NuevoCliente edit = new NuevoCliente(open, idCliente);
+        edit.btnAceptar.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent evt){
+                tablaClientes();
+                tablaVehiculos(idCliente);
+            }
+        });
         edit.setVisible(true);
-        
     }//GEN-LAST:event_bEditarClientesActionPerformed
 
     private void tClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tClientesMouseClicked
@@ -160,12 +189,28 @@ public class ListaClientes extends javax.swing.JFrame {
         idCliente = id;
         tablaVehiculos(id);
     }//GEN-LAST:event_tClientesMouseClicked
+
+    private void tVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tVehiculosMouseClicked
+        int row = tVehiculos.rowAtPoint(evt.getPoint());
+        int id = Integer.parseInt(tVehiculos.getModel().getValueAt(row, 0).toString());
+        idVehiculo = id;
+    }//GEN-LAST:event_tVehiculosMouseClicked
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formFocusGained
     public void tablaClientes(){
         tablas.llenadoTablaClientes(tClientes);
     }
     
     public void tablaVehiculos(int id){
-        tablas.llenadoTablaVehiculos(tVehiculos, id);
+        if(id != 0){
+            tablas.llenadoTablaVehiculos(tVehiculos, id);
+        }
     }
    
     public void desactivarEdicion(){
