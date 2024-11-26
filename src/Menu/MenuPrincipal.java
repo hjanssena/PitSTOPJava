@@ -165,7 +165,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
             aviso.tFecha.setText(orden.getFechaPromesa().toString());
             aviso.tNombre.setText(orden.getVehiculo().getCliente().getFullName());
             aviso.tServicio.setText(orden.getServicio());
-            aviso.tVehiculo.setText("Modelo" + orden.getVehiculo().getModelo() + "\t" +orden.getVehiculo().getMarca() + "\t" + orden.getVehiculo().getPlaca());
+            aviso.tVehiculo.setText("Modelo: " + orden.getVehiculo().getModelo() + "\tMarca: " +orden.getVehiculo().getMarca() + "\tPlaca: "
+                    + "" + orden.getVehiculo().getPlaca());
         }        
     }
     

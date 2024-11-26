@@ -5,6 +5,7 @@
 package Menu;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import pitstop.Cliente;
 import pitstop.SqLite;
@@ -25,7 +26,7 @@ public class ListaClientes extends javax.swing.JFrame {
         initComponents();
         tablaClientes();
         desactivarEdicion();
-       
+       this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -45,6 +46,7 @@ public class ListaClientes extends javax.swing.JFrame {
         bEditarVehiculos = new javax.swing.JToggleButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tClientes = new javax.swing.JTable();
+        bSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,6 +103,13 @@ public class ListaClientes extends javax.swing.JFrame {
     });
     jScrollPane3.setViewportView(tClientes);
 
+    bSalir.setText("Salir");
+    bSalir.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            bSalirActionPerformed(evt);
+        }
+    });
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -112,15 +121,17 @@ public class ListaClientes extends javax.swing.JFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addContainerGap())
         .addGroup(layout.createSequentialGroup()
-            .addGap(164, 164, 164)
-            .addComponent(lClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGap(50, 50, 50)
-            .addComponent(bEditarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(177, 177, 177)
-            .addComponent(lVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGap(40, 40, 40)
+            .addGap(70, 70, 70)
+            .addComponent(lClientes)
+            .addGap(27, 27, 27)
+            .addComponent(bEditarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+            .addComponent(lVehiculos)
+            .addGap(18, 18, 18)
             .addComponent(bEditarVehiculos, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(51, 51, 51))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+            .addComponent(bSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(15, 15, 15))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,10 +141,11 @@ public class ListaClientes extends javax.swing.JFrame {
                 .addComponent(bEditarClientes)
                 .addComponent(lClientes)
                 .addComponent(bEditarVehiculos)
-                .addComponent(lVehiculos))
+                .addComponent(lVehiculos)
+                .addComponent(bSalir))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jScrollPane3))
             .addContainerGap())
     );
@@ -160,6 +172,11 @@ public class ListaClientes extends javax.swing.JFrame {
         idCliente = id;
         tablaVehiculos(id);
     }//GEN-LAST:event_tClientesMouseClicked
+
+    private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_bSalirActionPerformed
     public void tablaClientes(){
         tablas.llenadoTablaClientes(tClientes);
     }
@@ -219,6 +236,7 @@ public class ListaClientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton bEditarClientes;
     private javax.swing.JToggleButton bEditarVehiculos;
+    private javax.swing.JButton bSalir;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lClientes;
