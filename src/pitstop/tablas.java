@@ -40,6 +40,7 @@ public class tablas {
         DefaultTableModel modelo = new DefaultTableModel(datos, titulos);
         tabla.setModel(modelo);
     }
+    
    public void llenadoTablaVehiculos(JTable tabla, int id){
        Vector<String> titulos = new Vector<String>();
         Vector<Vector<Object>> datos = new Vector<Vector<Object>>();
@@ -70,4 +71,59 @@ public class tablas {
         DefaultTableModel modelo = new DefaultTableModel(datos, titulos);
         tabla.setModel(modelo);
    }
+   
+   public void llenadoTablaTecnicos(JTable tabla){
+        Vector<String> titulos = new Vector<String>();
+        Vector<Vector<Object>> datos = new Vector<Vector<Object>>();
+        
+        titulos.add("Nombre ");
+        titulos.add("ID");
+        titulos.add("Telefono");
+        titulos.add("Email");
+        titulos.add("Nivel");
+        
+        SqLite sql = new SqLite();
+        ArrayList<Tecnico> tecnico = sql.RetrieveTecnicos("select * from Empleados");
+        
+        for(Tecnico tecnicos : tecnico){
+            Vector<Object> fila = new Vector<Object>();
+            fila.add(tecnicos.getFullName());
+            fila.add(tecnicos.getId());
+            fila.add(tecnicos.getTelefono());
+            fila.add(tecnicos.geteMail());
+            fila.add(tecnicos.getNivelTecnico());
+            
+            datos.add(fila); //Aquí se va armando la matriz de datos
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel(datos, titulos);
+        tabla.setModel(modelo);
+    }
+   
+   public void llenadoTablaAsesores(JTable tabla){
+        Vector<String> titulos = new Vector<String>();
+        Vector<Vector<Object>> datos = new Vector<Vector<Object>>();
+        
+        titulos.add("Nombre ");
+        titulos.add("ID");
+        titulos.add("Telefono");
+        titulos.add("Email");
+        
+        
+        SqLite sql = new SqLite();
+        ArrayList<Asesor> asesores = sql.RetrieveAsesores("select * from Empleados");
+        
+        for(Asesor asesor : asesores){
+            Vector<Object> fila = new Vector<Object>();
+            fila.add(asesor.getFullName());
+            fila.add(asesor.getId());
+            fila.add(asesor.getTelefono());
+            fila.add(asesor.geteMail());
+            
+            datos.add(fila); //Aquí se va armando la matriz de datos
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel(datos, titulos);
+        tabla.setModel(modelo);
+    }
 }

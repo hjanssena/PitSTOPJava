@@ -4,6 +4,7 @@
  */
 package Menu;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -272,6 +273,7 @@ public class Aviso extends javax.swing.JPanel {
         if (a == 0){
             cbDetalles.setSelected(true);
             cbDetalles.setEnabled(false);
+            pAviso.setBackground(Color.red);
         }else {
             cbDetalles.setSelected(false);
         }
@@ -284,6 +286,7 @@ public class Aviso extends javax.swing.JPanel {
         if (a == 0){
             cbTrabajo.setSelected(true);
             cbTrabajo.setEnabled(false);
+            pAviso.setBackground(Color.orange);
         }else {
             cbTrabajo.setSelected(false);
         }
@@ -296,6 +299,7 @@ public class Aviso extends javax.swing.JPanel {
         if (a == 0){
             cbPartes.setSelected(true);
             cbPartes.setEnabled(false);
+            pAviso.setBackground(Color.green);
         }else {
             cbPartes.setSelected(false);
         }

@@ -17,6 +17,7 @@ public class ListaClientes extends javax.swing.JFrame {
     public tablas tablas = new tablas();
     public int idCliente;
     public int idVehiculo;
+    public boolean valor = false;
     /**
      * Creates new form ListaClientes
      */

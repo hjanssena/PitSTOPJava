@@ -151,6 +151,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void bEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmpleadosActionPerformed
         // TODO add your handling code here:
+        new Empleados().setVisible(true);
     }//GEN-LAST:event_bEmpleadosActionPerformed
     
 
