@@ -213,31 +213,17 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         jLabel13.setText("Cliente:");
 
-        lblCliente.setText("jLabel14");
-
         jLabel15.setText("Vehiculo:");
-
-        lblVehiculo.setText("jLabel14");
 
         jLabel14.setText("Telefono:");
 
-        lblTelefono.setText("jLabel14");
-
         jLabel16.setText("eMail:");
-
-        lblMail.setText("jLabel14");
 
         jLabel17.setText("Serie:");
 
-        lblSerie.setText("jLabel14");
-
         jLabel18.setText("Placa:");
 
-        lblPlaca.setText("jLabel14");
-
         jLabel19.setText("Kilometraje:");
-
-        lblKilometraje.setText("jLabel14");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

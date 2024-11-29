@@ -485,9 +485,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCliente">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel14"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel15">
       <Properties>
@@ -495,9 +492,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblVehiculo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel14"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
@@ -505,9 +499,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTelefono">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel14"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel16">
       <Properties>
@@ -515,9 +506,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMail">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel14"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel17">
       <Properties>
@@ -525,9 +513,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSerie">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel14"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel18">
       <Properties>
@@ -535,9 +520,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPlaca">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel14"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel19">
       <Properties>
@@ -545,9 +527,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblKilometraje">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel14"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
