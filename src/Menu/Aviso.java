@@ -264,6 +264,8 @@ public class Aviso extends javax.swing.JPanel {
 
     private void bEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarActionPerformed
         // TODO add your handling code here:
+        EditarOrden editar = new EditarOrden(restore, ordenId);
+        editar.setVisible(true);
     }//GEN-LAST:event_bEditarActionPerformed
 
     private void cbEntregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEntregadoActionPerformed

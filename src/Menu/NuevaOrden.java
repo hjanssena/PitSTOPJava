@@ -423,7 +423,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNuevoVehiculo)
                             .addComponent(btnAbrir))))
-                .addContainerGap(621, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -453,7 +453,8 @@ public class NuevaOrden extends javax.swing.JFrame {
         else{
             t.llenadoTablaClientesFiltrado(tblClientes, "Select * From Clientes Where nombre like ('%" + txt + "%')"
                 + " or apellidoP like ('%" + txt + "%')"
-                        + " or apellidoM like ('%" + txt + "%')");
+                        + " or apellidoM like ('%" + txt + "%')"
+                                + " or numeroTel like ('%" + txt + "%')");
         }
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
@@ -560,7 +561,7 @@ public class NuevaOrden extends javax.swing.JFrame {
         
         lblVehiculo.setText(vehiculo.getMarca() + " " + vehiculo.getModelo());
         lblKilometraje.setText(vehiculo.getKilometraje());
-        lblPlaca.setText(vehiculo.getKilometraje());
+        lblPlaca.setText(vehiculo.getPlaca());
         lblSerie.setText(vehiculo.getnSerie());
     }
     

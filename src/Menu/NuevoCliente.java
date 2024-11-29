@@ -4,6 +4,7 @@
  */
 package Menu;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import pitstop.Cliente;
 import pitstop.SqLite;
 
@@ -22,6 +23,7 @@ public class NuevoCliente extends javax.swing.JFrame {
         initComponents();
         this.open = open;
         this.id = id;
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
