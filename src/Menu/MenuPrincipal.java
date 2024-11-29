@@ -4,9 +4,8 @@
  */
 package Menu;
 
-import javax.swing.JCheckBox;
+import java.awt.Color;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import pitstop.OrdenServicio;
 import pitstop.SqLite;
@@ -23,7 +22,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         generarInfo();
-        //generarAvisoOrden();
     }
 
     /**
@@ -139,10 +137,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void bOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bOrdenActionPerformed
         // TODO add your handling code here:
-        Aviso aviso = new Aviso(); 
-        pMarco.add(aviso);
-        pMarco.updateUI();
-        
+        NuevaOrden orden = new NuevaOrden(this);
+        orden.setVisible(true);
     }//GEN-LAST:event_bOrdenActionPerformed
 
     private void bHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHistorialActionPerformed
@@ -155,24 +151,44 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_bEmpleadosActionPerformed
     
 
-    private void generarInfo(){
+    public void generarInfo(){
         SqLite sql = new SqLite();
-        ArrayList<OrdenServicio> ordenes = sql.RetrieveOrdenServicio("select * from OrdenesServicio");
+        ArrayList<OrdenServicio> ordenes = sql.RetrieveOrdenServicio("Select * From OrdenesServicio");
+        pMarco.removeAll();
         for (OrdenServicio orden : ordenes){
-            Aviso aviso = new Aviso(); 
-            pMarco.add(aviso);
-            pMarco.updateUI();
-            aviso.restore = this;
-            aviso.tFecha.setText(orden.getFechaPromesa().toString());
-            aviso.tNombre.setText(orden.getVehiculo().getCliente().getFullName());
-            aviso.tServicio.setText(orden.getServicio());
-            aviso.tVehiculo.setText("Modelo" + orden.getVehiculo().getModelo() + "\t" +orden.getVehiculo().getMarca() + "\t" + orden.getVehiculo().getPlaca());
-        }        
+            if(orden.getEstatusActual() != OrdenServicio.Estatus.Entregada){
+                Aviso aviso = new Aviso(orden.getOrdenId()); 
+                pMarco.add(aviso);
+                aviso.restore = this;
+                aviso.tFecha.setText(orden.getFechaPromesa().toString());
+                aviso.tNombre.setText(orden.getVehiculo().getCliente().getFullName());
+                aviso.tServicio.setText(orden.getServicio());
+                aviso.tVehiculo.setText(orden.getVehiculo().getMarca() + "\t" +orden.getVehiculo().getModelo() + "\t" + orden.getVehiculo().getPlaca());
+                switch(orden.getEstatusActual()){
+                    case OrdenServicio.Estatus.Proceso:
+                        aviso.pAviso.setBackground(Color.green);
+                        aviso.cbProceso.setSelected(true);
+                        aviso.cbProceso.setEnabled(false);
+                        break;
+                    case OrdenServicio.Estatus.Terminada:
+                        aviso.pAviso.setBackground(Color.orange);
+                        aviso.cbProceso.setSelected(true);
+                        aviso.cbProceso.setEnabled(false);
+                        aviso.cbTerminado.setSelected(true);
+                        aviso.cbTerminado.setEnabled(false);
+                        break;
+                    case OrdenServicio.Estatus.Entregada:
+                        aviso.pAviso.setBackground(Color.red);
+                        aviso.cbProceso.setSelected(true);
+                        aviso.cbTerminado.setSelected(true);
+                        aviso.cbEntregado.setSelected(true);
+                        break;
+                }
+            }
+        }
+        pMarco.updateUI();
     }
     
-    public void crearOrden(){
-        
-    }
     /**
      * @param args the command line arguments
      */

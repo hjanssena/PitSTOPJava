@@ -27,16 +27,18 @@ public class NuevaOrden extends javax.swing.JFrame {
     private int idVehiculo;
     private int idAsesor;
     private int idTecnico;
+    private MenuPrincipal menu;
     
     /**
      * Creates new form NuevaOrden
      */
-    public NuevaOrden() {
+    public NuevaOrden(MenuPrincipal menu) {
         initComponents();
         t = new tablas();
         t.llenadoTablaClientes(tblClientes);
         t.LlenadoComboAsesores(comboAsesores);
         t.LlenadoComboTecnicos(comboTecnicos);
+        this.menu = menu;
     }
 
     /**
@@ -95,7 +97,11 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         jButton5.setText("jButton5");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTitulo.setText("Nueva orden");
@@ -183,6 +189,11 @@ public class NuevaOrden extends javax.swing.JFrame {
         jLabel12.setText("/");
 
         btnAbrir.setText("Abrir orden");
+        btnAbrir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAbrirMouseClicked(evt);
+            }
+        });
         btnAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbrirActionPerformed(evt);
@@ -237,7 +248,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                .addComponent(txtBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -251,7 +262,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(139, 139, 139)
                                         .addComponent(btnNuevoCliente)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2)
@@ -316,19 +327,19 @@ public class NuevaOrden extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                            .addComponent(lblSerie, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 7, Short.MAX_VALUE)))))
+                                .addGap(0, 4, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
-                .addGap(285, 285, 285))
+                .addGap(305, 305, 305))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +423,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnNuevoVehiculo)
                             .addComponent(btnAbrir))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(621, Short.MAX_VALUE))
         );
 
         pack();
@@ -505,6 +516,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                 if (confirm == 0){
                     x.Create();
                     this.setVisible(false);
+                    menu.generarInfo();
                 }
             }
             else{
@@ -518,12 +530,20 @@ public class NuevaOrden extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Favor de seleccionar un vehiculo y un cliente para abrir la orden");
         }
         
-
+        
     }//GEN-LAST:event_btnAbrirActionPerformed
 
     private void comboAsesoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboAsesoresItemStateChanged
         
     }//GEN-LAST:event_comboAsesoresItemStateChanged
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentHidden
+
+    private void btnAbrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAbrirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAbrirMouseClicked
 
     private void llenarLblCliente(){
         SqLite sql = new SqLite();
@@ -586,13 +606,13 @@ public class NuevaOrden extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NuevaOrden().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAbrir;
+    public javax.swing.JButton btnAbrir;
     private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnNuevoCliente;
     private javax.swing.JButton btnNuevoVehiculo;

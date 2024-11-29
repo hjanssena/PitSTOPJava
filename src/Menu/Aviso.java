@@ -6,18 +6,22 @@ package Menu;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import pitstop.OrdenServicio;
+import pitstop.SqLite;
 
 /**
  *
  * @author edwin
  */
 public class Aviso extends javax.swing.JPanel {
+    int ordenId;
     public MenuPrincipal restore;
     /**
      * Creates new form Aviso
      */
-    public Aviso() {
+    public Aviso(int ordenId) {
         initComponents();
+        this.ordenId = ordenId;
     }
 
     /**
@@ -38,9 +42,9 @@ public class Aviso extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        cbPartes = new javax.swing.JCheckBox();
-        cbTrabajo = new javax.swing.JCheckBox();
-        cbDetalles = new javax.swing.JCheckBox();
+        cbProceso = new javax.swing.JCheckBox();
+        cbTerminado = new javax.swing.JCheckBox();
+        cbEntregado = new javax.swing.JCheckBox();
         bEditar = new javax.swing.JButton();
         tNombre = new javax.swing.JTextField();
         tVehiculo = new javax.swing.JTextField();
@@ -124,27 +128,27 @@ public class Aviso extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        cbPartes.setText("Partes");
-        cbPartes.setMaximumSize(new java.awt.Dimension(70, 24));
-        cbPartes.setMinimumSize(new java.awt.Dimension(70, 24));
-        cbPartes.setPreferredSize(new java.awt.Dimension(70, 24));
-        cbPartes.addActionListener(new java.awt.event.ActionListener() {
+        cbProceso.setText("En proceso");
+        cbProceso.setMaximumSize(new java.awt.Dimension(70, 24));
+        cbProceso.setMinimumSize(new java.awt.Dimension(70, 24));
+        cbProceso.setPreferredSize(new java.awt.Dimension(70, 24));
+        cbProceso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbPartesActionPerformed(evt);
+                cbProcesoActionPerformed(evt);
             }
         });
 
-        cbTrabajo.setText("Trabajo");
-        cbTrabajo.addActionListener(new java.awt.event.ActionListener() {
+        cbTerminado.setText("Terminado");
+        cbTerminado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbTrabajoActionPerformed(evt);
+                cbTerminadoActionPerformed(evt);
             }
         });
 
-        cbDetalles.setText("Detalles");
-        cbDetalles.addActionListener(new java.awt.event.ActionListener() {
+        cbEntregado.setText("Entregado");
+        cbEntregado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbDetallesActionPerformed(evt);
+                cbEntregadoActionPerformed(evt);
             }
         });
 
@@ -199,16 +203,12 @@ public class Aviso extends javax.swing.JPanel {
                     .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pAvisoLayout.createSequentialGroup()
-                        .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbPartes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbDetalles)
-                            .addComponent(cbTrabajo))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAvisoLayout.createSequentialGroup()
-                        .addComponent(bEditar)
-                        .addGap(24, 24, 24))))
+                .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbProceso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bEditar)
+                    .addComponent(cbTerminado, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                    .addComponent(cbEntregado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pAvisoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {tFecha, tNombre, tServicio, tVehiculo});
@@ -221,15 +221,15 @@ public class Aviso extends javax.swing.JPanel {
                     .addComponent(pTiposDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pAvisoLayout.createSequentialGroup()
                         .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbPartes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbProceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tNombre, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(8, 8, 8)
                         .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbTrabajo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbTerminado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tVehiculo))
                         .addGap(8, 8, 8)
                         .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbDetalles)
+                            .addComponent(cbEntregado)
                             .addComponent(tFecha, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(8, 8, 8)
                         .addGroup(pAvisoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -244,21 +244,21 @@ public class Aviso extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 543, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pAviso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(7, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 160, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap(10, Short.MAX_VALUE)
                     .addComponent(pAviso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(10, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -266,45 +266,41 @@ public class Aviso extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_bEditarActionPerformed
 
-    private void cbDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetallesActionPerformed
-        // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);
-
-        if (a == 0){
-            cbDetalles.setSelected(true);
-            cbDetalles.setEnabled(false);
-            pAviso.setBackground(Color.red);
-        }else {
-            cbDetalles.setSelected(false);
-        }
-        desactivado();
-    }//GEN-LAST:event_cbDetallesActionPerformed
-
-    private void cbTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTrabajoActionPerformed
+    private void cbEntregadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEntregadoActionPerformed
         // TODO add your handling code here:
         int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);
         if (a == 0){
-            cbTrabajo.setSelected(true);
-            cbTrabajo.setEnabled(false);
-            pAviso.setBackground(Color.orange);
+            cambiarEstatus(OrdenServicio.Estatus.Entregada);
+            restore.generarInfo();
         }else {
-            cbTrabajo.setSelected(false);
+            cbEntregado.setSelected(false);
         }
         desactivado();
-    }//GEN-LAST:event_cbTrabajoActionPerformed
+    }//GEN-LAST:event_cbEntregadoActionPerformed
 
-    private void cbPartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPartesActionPerformed
+    private void cbTerminadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTerminadoActionPerformed
         // TODO add your handling code here:
         int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);
         if (a == 0){
-            cbPartes.setSelected(true);
-            cbPartes.setEnabled(false);
-            pAviso.setBackground(Color.green);
+            cambiarEstatus(OrdenServicio.Estatus.Terminada);
+            restore.generarInfo();
         }else {
-            cbPartes.setSelected(false);
+            cbTerminado.setSelected(false);
         }
         desactivado();
-    }//GEN-LAST:event_cbPartesActionPerformed
+    }//GEN-LAST:event_cbTerminadoActionPerformed
+
+    private void cbProcesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProcesoActionPerformed
+        // TODO add your handling code here:
+        int a = JOptionPane.showConfirmDialog(null, "¿Estas seguro?","Confirmacion",0);
+        if (a == 0){
+            cambiarEstatus(OrdenServicio.Estatus.Proceso);
+            restore.generarInfo();
+        }else {
+            cbProceso.setSelected(false);
+        }
+        desactivado();
+    }//GEN-LAST:event_cbProcesoActionPerformed
 
     private void tNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNombreActionPerformed
         // TODO add your handling code here:
@@ -323,19 +319,28 @@ public class Aviso extends javax.swing.JPanel {
     }//GEN-LAST:event_tFechaActionPerformed
     
     private void desactivado(){ 
-        if (!cbDetalles.isEnabled() && !cbTrabajo.isEnabled() && !cbPartes.isEnabled()) {
+        if (!cbEntregado.isEnabled() && !cbTerminado.isEnabled() && !cbProceso.isEnabled()) {
             //pAviso.setVisible(false);
             restore.pMarco.remove(this);
             restore.pMarco.revalidate();
             restore.pMarco.repaint();
         }
     }
+    
+    private void cambiarEstatus(pitstop.OrdenServicio.Estatus estatus){
+        SqLite sql = new SqLite();
+        OrdenServicio orden = sql.RetrieveOrdenServicio("Select * From OrdenesServicio Where idOrden = " + ordenId).get(0);
+        if(estatus.compareTo(orden.getEstatusActual()) > 0){
+            orden.setEstatusActual(estatus);
+            orden.Update();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bEditar;
-    public javax.swing.JCheckBox cbDetalles;
-    public javax.swing.JCheckBox cbPartes;
-    public javax.swing.JCheckBox cbTrabajo;
+    public javax.swing.JCheckBox cbEntregado;
+    public javax.swing.JCheckBox cbProceso;
+    public javax.swing.JCheckBox cbTerminado;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
