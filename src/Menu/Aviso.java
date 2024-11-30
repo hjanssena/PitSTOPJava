@@ -22,6 +22,7 @@ public class Aviso extends javax.swing.JPanel {
     public Aviso(int ordenId) {
         initComponents();
         this.ordenId = ordenId;
+        
     }
 
     /**
@@ -51,6 +52,8 @@ public class Aviso extends javax.swing.JPanel {
         tFecha = new javax.swing.JTextField();
         tServicio = new javax.swing.JTextField();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         setMaximumSize(new java.awt.Dimension(530, 160));
         setMinimumSize(new java.awt.Dimension(530, 160));
         setPreferredSize(new java.awt.Dimension(530, 160));
@@ -60,6 +63,11 @@ public class Aviso extends javax.swing.JPanel {
         pAviso.setMaximumSize(new java.awt.Dimension(510, 140));
         pAviso.setMinimumSize(new java.awt.Dimension(510, 140));
         pAviso.setPreferredSize(new java.awt.Dimension(510, 140));
+        pAviso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pAvisoMouseClicked(evt);
+            }
+        });
 
         pTiposDatos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         pTiposDatos.setMaximumSize(new java.awt.Dimension(108, 126));
@@ -319,6 +327,12 @@ public class Aviso extends javax.swing.JPanel {
     private void tFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tFechaActionPerformed
+
+    private void pAvisoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAvisoMouseClicked
+        // TODO add your handling code here:
+        InfoOrden nuevo = new InfoOrden(ordenId);
+        nuevo.setVisible(true);
+    }//GEN-LAST:event_pAvisoMouseClicked
     
     private void desactivado(){ 
         if (!cbEntregado.isEnabled() && !cbTerminado.isEnabled() && !cbProceso.isEnabled()) {

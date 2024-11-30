@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Date;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pitstop.Asesor;
 import pitstop.Cliente;
@@ -39,6 +40,7 @@ public class EditarOrden extends javax.swing.JFrame {
         setInfo();
         
         this.menu = menu;
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -89,6 +91,10 @@ public class EditarOrden extends javax.swing.JFrame {
 
         jButton5.setText("jButton5");
 
+        setMaximumSize(new java.awt.Dimension(550, 392));
+        setMinimumSize(new java.awt.Dimension(550, 392));
+        setPreferredSize(new java.awt.Dimension(550, 392));
+        setResizable(false);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
@@ -280,7 +286,7 @@ public class EditarOrden extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

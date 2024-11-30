@@ -198,4 +198,42 @@ public class tablas {
            combo.addItem(tecnico.getId() + "/" + tecnico.getFullName());
        }
    }
+      
+   public void llenadoHistorial(JTable tabla){
+        Vector<String> titulos = new Vector<String>();
+        Vector<Vector<Object>> datos = new Vector<Vector<Object>>();
+        
+        titulos.add("ID Servicio");
+        titulos.add("Cliente");
+        titulos.add("Vehiculo");
+        titulos.add("Telefono");
+        titulos.add("Email");
+        titulos.add("Asesor");
+        titulos.add("Tecnico");
+        titulos.add("Servicio");
+        titulos.add("Fecha");
+        
+        SqLite sql = new SqLite();
+        ArrayList<OrdenServicio> ordenes = sql.RetrieveOrdenServicio("select * from OrdenesServicio");
+        
+        for(OrdenServicio orden : ordenes){
+            if(orden.getEstatusActual()== OrdenServicio.Estatus.Entregada){
+                Vector<Object> fila = new Vector<Object>();
+                fila.add(orden.getOrdenId());
+                fila.add(orden.getVehiculo().getCliente().getFullName());
+                fila.add(orden.getVehiculo().getMarca() + " "+ orden.getVehiculo().getModelo() );
+                fila.add(orden.getVehiculo().getCliente().getTelefono());
+                fila.add(orden.getVehiculo().getCliente().geteMail());
+                fila.add(orden.getAsesor().getFullName());
+                fila.add(orden.getTecnico().getFullName());
+                fila.add(orden.getServicio());
+                fila.add(orden.getFechaPromesa());
+                
+                datos.add(fila); //Aquí se va armando la matriz de datos
+            } 
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel(datos, titulos);
+        tabla.setModel(modelo);
+    }
 }

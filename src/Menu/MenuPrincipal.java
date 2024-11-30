@@ -5,8 +5,10 @@
 package Menu;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import pitstop.OrdenServicio;
 import pitstop.SqLite;
 /**
@@ -87,13 +89,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bOrden, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bHistorial, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jButtonsLayout.setVerticalGroup(
@@ -108,8 +110,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pMarco.setAlignmentY(1.0F);
         pMarco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pMarco.setLayout(new java.awt.GridLayout(0, 2, 0, 20));
+        pMarco.setLayout(new java.awt.GridLayout(0, 2, 100, 20));
         jScroll.setViewportView(pMarco);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,7 +120,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+            .addComponent(jScroll)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,6 +146,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void bHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bHistorialActionPerformed
         // TODO add your handling code here:
+        new Historial().setVisible(true);
     }//GEN-LAST:event_bHistorialActionPerformed
 
     private void bEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmpleadosActionPerformed
@@ -164,26 +168,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 aviso.tNombre.setText(orden.getVehiculo().getCliente().getFullName());
                 aviso.tServicio.setText(orden.getServicio());
                 aviso.tVehiculo.setText(orden.getVehiculo().getMarca() + "\t" +orden.getVehiculo().getModelo() + "\t" + orden.getVehiculo().getPlaca());
-                switch(orden.getEstatusActual()){
-                    case OrdenServicio.Estatus.Proceso:
+                
+                    if (orden.getEstatusActual()==OrdenServicio.Estatus.Proceso){
                         aviso.pAviso.setBackground(Color.green);
                         aviso.cbProceso.setSelected(true);
                         aviso.cbProceso.setEnabled(false);
-                        break;
-                    case OrdenServicio.Estatus.Terminada:
+                    }else if(orden.getEstatusActual()==OrdenServicio.Estatus.Terminada){
                         aviso.pAviso.setBackground(Color.orange);
                         aviso.cbProceso.setSelected(true);
                         aviso.cbProceso.setEnabled(false);
                         aviso.cbTerminado.setSelected(true);
                         aviso.cbTerminado.setEnabled(false);
-                        break;
-                    case OrdenServicio.Estatus.Entregada:
-                        aviso.pAviso.setBackground(Color.red);
+                    }else if(orden.getEstatusActual()==OrdenServicio.Estatus.Entregada){
+                         aviso.pAviso.setBackground(Color.red);
                         aviso.cbProceso.setSelected(true);
                         aviso.cbTerminado.setSelected(true);
-                        aviso.cbEntregado.setSelected(true);
-                        break;
-                }
+                        aviso.cbEntregado.setSelected(true);  
+                    } 
             }
         }
         pMarco.updateUI();

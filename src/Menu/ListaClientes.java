@@ -6,7 +6,11 @@ package Menu;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import pitstop.Cliente;
+import pitstop.SqLite;
 import pitstop.tablas;
 
 /**
@@ -15,7 +19,7 @@ import pitstop.tablas;
  */
 public class ListaClientes extends javax.swing.JFrame {
     public tablas tablas = new tablas();
-    public int idCliente;
+    public int idCliente=0;
     public int idVehiculo;
     public boolean valor = false;
     /**
@@ -50,6 +54,11 @@ public class ListaClientes extends javax.swing.JFrame {
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
             }
         });
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -159,28 +168,42 @@ public class ListaClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bEditarVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarVehiculosActionPerformed
-        boolean open = true;
-        NuevoVehiculo edit = new NuevoVehiculo(open, idVehiculo, idCliente);
-        edit.btnAceptar.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent evt){
-                tablaClientes();
-                tablaVehiculos(idCliente);
-            }
-        });
-        edit.setVisible(true);
+        try{
+            boolean open = true;
+            NuevoVehiculo edit = new NuevoVehiculo(open, idVehiculo, idCliente);
+            edit.btnAceptar.addMouseListener(new MouseAdapter(){
+                public void mouseClicked(MouseEvent evt){
+                    tablaClientes();
+                    tablaVehiculos(idCliente);
+                }
+            });
+            edit.setVisible(true);       
+        }catch(IndexOutOfBoundsException e5){
+                JOptionPane.showMessageDialog(rootPane, "ERROR Vehiculo no seleccionado, selecciona uno antes de presionar");
+        }
     }//GEN-LAST:event_bEditarVehiculosActionPerformed
 
     private void bEditarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarClientesActionPerformed
         // TODO add your handling code here:
-        boolean open = true;
-        NuevoCliente edit = new NuevoCliente(open, idCliente);
-        edit.btnAceptar.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent evt){
-                tablaClientes();
-                tablaVehiculos(idCliente);
+        try{
+ 
+            if (idCliente==0){
+                throw new IndexOutOfBoundsException("ERROR");
+            }else{
+                 boolean open = true;
+                NuevoCliente edit = new NuevoCliente(open, idCliente);
+                edit.btnAceptar.addMouseListener(new MouseAdapter(){
+                    public void mouseClicked(MouseEvent evt){
+                        tablaClientes();
+                        tablaVehiculos(idCliente);
+                        }
+                    });
+                edit.setVisible(true);  
             }
-        });
-        edit.setVisible(true);
+        }catch(IndexOutOfBoundsException e4){
+                JOptionPane.showMessageDialog(rootPane, "ERROR Cliente no seleccionado, selecciona uno antes de presionar");
+        }
+
     }//GEN-LAST:event_bEditarClientesActionPerformed
 
     private void tClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tClientesMouseClicked
@@ -204,6 +227,13 @@ public class ListaClientes extends javax.swing.JFrame {
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         // TODO add your handling code here:
     }//GEN-LAST:event_formFocusGained
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        tClientes.clearSelection();
+        tVehiculos.clearSelection();
+        idCliente=0;
+    }//GEN-LAST:event_formMouseClicked
     public void tablaClientes(){
         tablas.llenadoTablaClientes(tClientes);
     }

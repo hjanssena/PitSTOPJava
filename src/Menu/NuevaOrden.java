@@ -7,6 +7,7 @@ package Menu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import pitstop.Asesor;
 import pitstop.Cliente;
@@ -39,6 +40,7 @@ public class NuevaOrden extends javax.swing.JFrame {
         t.LlenadoComboAsesores(comboAsesores);
         t.LlenadoComboTecnicos(comboTecnicos);
         this.menu = menu;
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -97,6 +99,9 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         jButton5.setText("jButton5");
 
+        setMaximumSize(new java.awt.Dimension(716, 615));
+        setMinimumSize(new java.awt.Dimension(716, 615));
+        setResizable(false);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
@@ -248,7 +253,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                                 .addGap(15, 15, 15)
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                .addComponent(txtBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -263,10 +268,10 @@ public class NuevaOrden extends javax.swing.JFrame {
                                         .addGap(139, 139, 139)
                                         .addComponent(btnNuevoCliente)))))
                         .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
                         .addComponent(jLabel2)
-                        .addGap(164, 164, 164)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel19)
@@ -334,7 +339,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                                     .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblMail, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 4, Short.MAX_VALUE)))))
+                                .addGap(0, 5, Short.MAX_VALUE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
