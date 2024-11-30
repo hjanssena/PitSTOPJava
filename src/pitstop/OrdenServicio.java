@@ -10,7 +10,7 @@ import java.sql.Date;
  * @author janss
  */
 public class OrdenServicio {
-    public enum Estatus {Espera, Proceso, Detenida, Terminada};
+    public enum Estatus {Espera, Proceso, Terminada, Entregada};
     public enum Servicios {Preventivo, Correctivo};
     
     private int ordenId;

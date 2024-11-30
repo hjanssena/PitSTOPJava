@@ -7,6 +7,7 @@ package Menu;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import pitstop.Asesor;
 import pitstop.Cliente;
 import pitstop.Empleado;
@@ -27,6 +28,7 @@ public class NuevoEmpleado extends javax.swing.JFrame {
         initComponents();
         this.open = open;
         this.id = id;
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -235,6 +237,9 @@ public class NuevoEmpleado extends javax.swing.JFrame {
         if(cbbTipoEmpleado.getSelectedItem().toString().equals("Tecnico")){
             cbbNivel.setEnabled(true);
         }
+        if(cbbTipoEmpleado.getSelectedItem().toString().equals("Asesor")){
+            cbbNivel.setEnabled(false);
+        }
     }//GEN-LAST:event_cbbTipoEmpleadoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -257,6 +262,7 @@ public class NuevoEmpleado extends javax.swing.JFrame {
                 txtEmail.setText(asesores.geteMail());
                 cbbTipoEmpleado.setSelectedIndex(1);
                 cbbTipoEmpleado.setSelectedItem("Asesor");
+                cbbNivel.setEnabled(false);
             }
         }
         
@@ -268,17 +274,17 @@ public class NuevoEmpleado extends javax.swing.JFrame {
                 txtApellidoM.setText(tec.getApellidoM());
                 txtTelefono.setText(tec.getTelefono());
                 txtEmail.setText(tec.geteMail());
-                cbbTipoEmpleado.setSelectedIndex(2);
+                cbbTipoEmpleado.setSelectedIndex(1);
                 cbbTipoEmpleado.setSelectedItem("Tecnico");
                 String level = tec.getNivelTecnico().toString();
                 if (level.equals("Principiante")){
-                    cbbNivel.setSelectedIndex(1);
+                    cbbNivel.setSelectedIndex(0);
                     cbbNivel.setSelectedItem(level);
                 }else if(level.equals("Intermedio")){
-                    cbbNivel.setSelectedIndex(2);
+                    cbbNivel.setSelectedIndex(1);
                     cbbNivel.setSelectedItem(level);
                 }else if(level.equals("Master")){
-                    cbbNivel.setSelectedIndex(3);
+                    cbbNivel.setSelectedIndex(2);
                     cbbNivel.setSelectedItem(level);
                 }
             }

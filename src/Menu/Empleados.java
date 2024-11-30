@@ -6,7 +6,12 @@ package Menu;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import pitstop.Asesor;
+import pitstop.SqLite;
+import pitstop.Tecnico;
 import pitstop.tablas;
 
 /**
@@ -15,7 +20,7 @@ import pitstop.tablas;
  */
 public class Empleados extends javax.swing.JFrame {
     public tablas tablas = new tablas();
-    public int idEmpleado;
+    public int idEmpleado=0;
     public boolean valor;
     
     /**
@@ -48,8 +53,11 @@ public class Empleados extends javax.swing.JFrame {
         bAgregarEmpleado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 1000));
-        setPreferredSize(new java.awt.Dimension(700, 500));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         tTecnicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,16 +167,35 @@ public class Empleados extends javax.swing.JFrame {
 
     private void bEditarAsesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarAsesorActionPerformed
         // TODO add your handling code here:
-        valor = true;
-        NuevoEmpleado nuevo = new NuevoEmpleado(valor,idEmpleado);
-            nuevo.btnAceptar.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent evt){
-                tablas();
+        try{
+            if(idEmpleado==0){
+                throw new IndexOutOfBoundsException("ERROR");
+            }else {
+                int i=0;
+                SqLite sql = new SqLite();
+                ArrayList<Tecnico> tecnico = sql.RetrieveTecnicos("select * from Empleados");
+                ArrayList<Asesor> asesores = sql.RetrieveAsesores("select * from Empleados");
+                for (Asesor as : asesores){
+                    if (idEmpleado == as.getId()){
+                        valor = true;
+                        NuevoEmpleado nuevo = new NuevoEmpleado(valor,idEmpleado);
+                            nuevo.btnAceptar.addMouseListener(new MouseAdapter(){
+                            public void mouseClicked(MouseEvent evt){
+                                tablas();
+                            }
+                        });
+                        nuevo.setVisible(true);
+                    }else if(idEmpleado == tecnico.get(i).getId()){
+                        JOptionPane.showMessageDialog(rootPane, "ERROR selecciona un asesor");
+
+                    }
+                  i++;  
+                }
             }
-        });
-        nuevo.setVisible(true);
-        tAsesores.clearSelection();
-        tTecnicos.clearSelection();
+            
+        }catch(IndexOutOfBoundsException e3){
+            JOptionPane.showMessageDialog(rootPane, "ERROR Asesor no seleccionado, selecciona uno antes de presionar");
+        }
     }//GEN-LAST:event_bEditarAsesorActionPerformed
 
     private void bAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarEmpleadoActionPerformed
@@ -185,16 +212,35 @@ public class Empleados extends javax.swing.JFrame {
 
     private void bEditarTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarTecnicoActionPerformed
         // TODO add your handling code here:
-        boolean value = true;
-        NuevoEmpleado nuevo = new NuevoEmpleado(value,idEmpleado);
-            nuevo.btnAceptar.addMouseListener(new MouseAdapter(){
-            public void mouseClicked(MouseEvent evt){
-                tablas();
+        try{
+            if(idEmpleado==0){
+                throw new IndexOutOfBoundsException("ERROR");
+            }else {
+                int i=0;
+                SqLite sql = new SqLite();
+                ArrayList<Tecnico> tecnico = sql.RetrieveTecnicos("select * from Empleados");
+                ArrayList<Asesor> asesores = sql.RetrieveAsesores("select * from Empleados");
+                for (Tecnico tec : tecnico){
+
+                    if (idEmpleado == tec.getId()){
+                        boolean value = true;
+                        NuevoEmpleado nuevo = new NuevoEmpleado(value,idEmpleado);
+                        nuevo.btnAceptar.addMouseListener(new MouseAdapter(){
+                        public void mouseClicked(MouseEvent evt){
+                                tablas();
+                            }
+                        });
+                        nuevo.setVisible(true);
+                    }else if(idEmpleado == asesores.get(i).getId()){
+                        JOptionPane.showMessageDialog(rootPane, "ERROR selecciona un tecnico");
+                    }
+                  i++;  
+                }
             }
-        });
-        nuevo.setVisible(true);
-        tAsesores.clearSelection();
-        tTecnicos.clearSelection();
+        }
+        catch(IndexOutOfBoundsException e1){
+                JOptionPane.showMessageDialog(rootPane, "ERROR Tecnico no seleccionado, selecciona uno antes de presionar");
+        }   
     }//GEN-LAST:event_bEditarTecnicoActionPerformed
 
     private void tTecnicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tTecnicosMouseClicked
@@ -202,6 +248,7 @@ public class Empleados extends javax.swing.JFrame {
         int row = tTecnicos.rowAtPoint(evt.getPoint());
         int id = Integer.parseInt(tTecnicos.getModel().getValueAt(row, 1).toString());
         idEmpleado = id;
+        tAsesores.clearSelection();
     }//GEN-LAST:event_tTecnicosMouseClicked
 
     private void tAsesoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tAsesoresMouseClicked
@@ -209,7 +256,15 @@ public class Empleados extends javax.swing.JFrame {
         int row = tAsesores.rowAtPoint(evt.getPoint());
         int id = Integer.parseInt(tAsesores.getModel().getValueAt(row, 1).toString());
         idEmpleado = id;
+        tTecnicos.clearSelection();
     }//GEN-LAST:event_tAsesoresMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        tTecnicos.clearSelection();
+        tAsesores.clearSelection();
+        idEmpleado=0;
+    }//GEN-LAST:event_formMouseClicked
 
     public void desactivarEdicion(){
         tTecnicos.setDefaultEditor(Object.class, null); 
