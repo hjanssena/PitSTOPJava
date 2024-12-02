@@ -169,15 +169,21 @@ public class ListaClientes extends javax.swing.JFrame {
 
     private void bEditarVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarVehiculosActionPerformed
         try{
-            boolean open = true;
-            NuevoVehiculo edit = new NuevoVehiculo(open, idVehiculo, idCliente);
-            edit.btnAceptar.addMouseListener(new MouseAdapter(){
-                public void mouseClicked(MouseEvent evt){
-                    tablaClientes();
-                    tablaVehiculos(idCliente);
-                }
-            });
-            edit.setVisible(true);       
+            if(idCliente == 0 || idVehiculo == 0){
+                throw new IndexOutOfBoundsException("ERROR");
+            }
+            else{
+                boolean open = true;
+                NuevoVehiculo edit = new NuevoVehiculo(open, idVehiculo, idCliente);
+                edit.btnAceptar.addMouseListener(new MouseAdapter(){
+                    public void mouseClicked(MouseEvent evt){
+                        tablaClientes();
+                        tablaVehiculos(idCliente);
+                    }
+                });
+                edit.setVisible(true); 
+            }
+                  
         }catch(IndexOutOfBoundsException e5){
                 JOptionPane.showMessageDialog(rootPane, "ERROR Vehiculo no seleccionado, selecciona uno antes de presionar");
         }
