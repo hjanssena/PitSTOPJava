@@ -54,9 +54,9 @@ public class Aviso extends javax.swing.JPanel {
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        setMaximumSize(new java.awt.Dimension(530, 160));
+        setMaximumSize(new java.awt.Dimension(685, 160));
         setMinimumSize(new java.awt.Dimension(480, 160));
-        setPreferredSize(new java.awt.Dimension(530, 160));
+        setPreferredSize(new java.awt.Dimension(685, 160));
 
         pAviso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pAviso.setAlignmentX(0.0F);
@@ -250,10 +250,10 @@ public class Aviso extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
+            .addGap(0, 685, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(88, Short.MAX_VALUE)
+                    .addContainerGap(99, Short.MAX_VALUE)
                     .addComponent(pAviso, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(86, 86, 86)))
         );
