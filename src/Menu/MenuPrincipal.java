@@ -46,7 +46,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pagina Principal");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setMinimumSize(new java.awt.Dimension(1370, 720));
         setName("paginaPrincipal"); // NOI18N
 
         jButtons.setMaximumSize(new java.awt.Dimension(1920, 1080));
@@ -112,7 +112,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pMarco.setAlignmentY(1.0F);
         pMarco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pMarco.setLayout(new java.awt.GridLayout(0, 2, 100, 20));
+        pMarco.setLayout(new java.awt.GridLayout(0, 2, 0, 20));
         jScroll.setViewportView(pMarco);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
